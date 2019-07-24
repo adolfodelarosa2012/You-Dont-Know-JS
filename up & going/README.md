@@ -12,7 +12,7 @@
 
 * [Foreword](foreword.md) (by [Jenn Lukas](http://jennlukas.com))
 * [Prefacio](../preface.md)
-* [Capítulo 1: En la programación](ch1.md)
+* [Capítulo 1: Introducción a la programación](ch1.md)
 * [Capítulo 2: Into JavaScript](ch2.md)
 * [Capítulo 3: Into YDKJS](ch3.md)
 * [Apéndice A: Agradecimientos!](apA.md)

@@ -23,18 +23,18 @@ Si en cada punto que encuentra una sorpresa o frustración en JavaScript, su res
 
 Si bien este subconjunto ha sido famoso como "Las partes buenas", le ruego a usted, querido lector, que lo considere como "Las partes fáciles", "Las partes seguras" o incluso "Las partes incompletas".
 
-Esta serie de libros * You Don't Know JavaScript * ofrece un desafío contrario: aprenda y comprenda profundamente * todo * de JavaScript, incluso y especialmente "Las partes difíciles".
+Esta serie de libros **You Don't Know JavaScript** ofrece un desafío contrario: aprenda y comprenda profundamente **todo** de JavaScript, incluso y especialmente "Las partes difíciles".
 
-Aquí, nos ocupamos de la tendencia de los desarrolladores de JS a aprender "lo suficiente" para sobrevivir, sin forzarse a aprender exactamente cómo y por qué el lenguaje se comporta como lo hace. Además, evitamos los consejos comunes para * retirarse * cuando el camino se vuelve difícil.
+Aquí, nos ocupamos de la tendencia de los desarrolladores de JS a aprender "lo suficiente" para sobrevivir, sin forzarse a aprender exactamente cómo y por qué el lenguaje se comporta como lo hace. Además, evitamos los consejos comunes para **retirarse** cuando el camino se vuelve difícil.
 
-No estoy contento, ni debería estarlo, al detenerse una vez que algo * simplemente funciona *, y no saber realmente por qué *. Lo desafío suavemente para que viaje por ese camino lleno de baches lleno de baches y acepte todo lo que JavaScript puede hacer. Con ese conocimiento, ninguna técnica, ningún marco, ninguna palabra de moda popular de la semana, estará más allá de su comprensión.
+No estoy contento, ni debería estarlo, al detenerse una vez que algo **simplemente funciona**, y no saber realmente **por qué**. Lo desafío suavemente para que viaje por ese camino lleno de baches lleno de baches y acepte todo lo que JavaScript puede hacer. Con ese conocimiento, ninguna técnica, ningún marco, ninguna palabra de moda popular de la semana, estará más allá de su comprensión.
 
 Cada uno de estos libros incluye partes fundamentales específicas del lenguaje que generalmente se malinterpretan o no se entienden, y se sumergen de manera profunda y exhaustiva en ellos. Debe alejarse de la lectura con una confianza firme en su comprensión, no solo de lo teórico, sino de los bits prácticos de "lo que necesita saber".
 
-El JavaScript que conoce * en este momento * es probablemente * partes * transmitidas a usted por otras personas que han sido quemadas por una comprensión incompleta. * Que * JavaScript no es más que una sombra del verdadero lenguaje. No * realmente * sabes JavaScript, * todavía *, pero si profundizas en esta serie, * lo harás *. Sigue leyendo, mis amigos. JavaScript te espera.
+El JavaScript que conoce **en este momento** es probablemente **partes** transmitidas a usted por otras personas que han sido quemadas por una comprensión incompleta. **Que** JavaScript no es más que una sombra del verdadero lenguaje. No **realmente** sabes JavaScript, **todavía**, pero si profundizas en esta serie, **lo harás**. Sigue leyendo, mis amigos. JavaScript te espera.
 
 ## Resumen
 
-JavaScript es impresionante. Es fácil de aprender parcialmente, y mucho más difícil de aprender completamente (o incluso * suficientemente *). Cuando los desarrolladores encuentran confusión, usualmente culpan al lenguaje en lugar de a su falta de comprensión. El objetivo de estos libros es solucionarlo, inspirando un fuerte aprecio por el lenguaje que puede ahora, y * debería *, conocer profundamente *.
+JavaScript es impresionante. Es fácil de aprender parcialmente, y mucho más difícil de aprender completamente (o incluso **suficientemente**). Cuando los desarrolladores encuentran confusión, usualmente culpan al lenguaje en lugar de a su falta de comprensión. El objetivo de estos libros es solucionarlo, inspirando un fuerte aprecio por el lenguaje que puede ahora, y **debería**, conocer profundamente.
 
 Nota: muchos de los ejemplos de este libro suponen entornos de motor JavaScript modernos (y de futuro), como ES6. Es posible que algunos códigos no funcionen como se describe si se ejecutan en motores antiguos (anteriores a ES6).

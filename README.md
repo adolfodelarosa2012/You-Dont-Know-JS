@@ -10,11 +10,11 @@ Esta es una serie de libros que profundizan en los mecanismos centrales del leng
 <a href="http://www.ebooks.com/1977375/you-don-t-know-js-async-performance/simpson-kyle/"><img src="async %26 performance/cover.jpg" width="75"></a>&nbsp;
 <a href="http://www.ebooks.com/2481820/you-don-t-know-js-es6-beyond/simpson-kyle/"><img src="es6 %26 beyond/cover.jpg" width="75"></a>
 
-Please feel free to contribute to the quality of this content by submitting PR's for improvements to code snippets, explanations, etc. While typo fixes are welcomed, they will likely be caught through normal editing processes, and are thus not necessarily as important for this repository.
+Por favor, siéntase libre de contribuir a la calidad de este contenido enviando RP para mejoras en fragmentos de código, explicaciones, etc. Si bien las correcciones tipográficas son bienvenidas, es probable que se detecten a través de procesos de edición normales, y por lo tanto no son necesariamente tan importantes para este repositorio.
 
-**To read more about the motivations and perspective behind this book series, check out the [Preface](preface.md).**
+**Para leer más sobre las motivaciones y la perspectiva detrás de esta serie de libros, echa un vistazo a la [Preface](preface.md).**
 
-## Titles
+## Títulos
 
 * Read online (free!): ["Up & Going"](up\%20&\%20going/README.md#you-dont-know-js-up--going), Published: [Buy Now](http://www.ebooks.com/1993212/you-don-t-know-js-up-going/simpson-kyle/) in print, but the ebook format is free!
 * Read online (free!): ["Scope & Closures"](scope\%20&\%20closures/README.md#you-dont-know-js-scope--closures), Published: [Buy Now](http://www.ebooks.com/1647631/you-don-t-know-js-scope-closures/simpson-kyle/)
@@ -23,36 +23,37 @@ Please feel free to contribute to the quality of this content by submitting PR's
 * Read online (free!): ["Async & Performance"](async\%20&\%20performance/README.md#you-dont-know-js-async--performance), Published: [Buy Now](http://www.ebooks.com/1977375/you-don-t-know-js-async-performance/simpson-kyle/)
 * Read online (free!): ["ES6 & Beyond"](es6\%20&\%20beyond/README.md#you-dont-know-js-es6--beyond), Published: [Buy Now](http://www.ebooks.com/2481820/you-don-t-know-js-es6-beyond/simpson-kyle/)
 
-## Publishing
+## Publicación
 
-These books are being released here as drafts, free to read, but are also being edited, produced, and published through O'Reilly.
+Estos libros se publican aquí como borradores, de lectura gratuita, pero también se editan, producen y publican a través de O'Reilly.
 
-If you like the content you find here, and want to support more content like it, please purchase the books once they are available for sale, through your normal book sources. :)
+Si le gusta el contenido que encuentra aquí y desea admitir más contenido como este, compre los libros una vez que estén disponibles para la venta, a través de sus fuentes habituales. :)
 
-If you'd like to contribute financially towards the effort (or any of my other OSS work) aside from purchasing the books, I do have a [patreon](https://www.patreon.com/getify) that I would always appreciate your generosity towards.
+Si desea contribuir financieramente para el esfuerzo (o cualquiera de mis otros trabajos de OSS) además de comprar los libros, tengo un [patreon](https://www.patreon.com/getify) que siempre agradecería tu generosidad.
 
 <a href="https://www.patreon.com/getify">[![patreon.png](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/getify)</a>
 
-## In-person Training
+## Entrenamiento en persona
 
-The content for these books derives heavily from a series of training materials I teach professionally (in both public and private-corporate workshop format): "Deep JavaScript Foundations", "Rethinking Async", and "ES6: The Right Parts" workshops.
+El contenido de estos libros se deriva en gran medida de una serie de materiales de capacitación que imparto profesionalmente (en formato de taller tanto público como privado-corporativo): talleres "Deep JavaScript Foundations", "Rethinking Async" y "ES6: The Right Parts".
 
-If you like this content and would like to contact me regarding conducting training on these, or other various JS/HTML5/node.js topics, please reach out to me through email: getify @ gmail
+Si le gusta este contenido y desea comunicarse conmigo para realizar una capacitación sobre estos u otros temas de JS / HTML5 / node.js, comuníquese conmigo por correo electrónico.: getify @ gmail
 
-## Online Video Training
+## Video entrenamiento en línea
 
-I also have some JS training material available in on-demand video format. I teach courses through [Frontend Masters](https://FrontendMasters.com), like my [Deep JavaScript Foundations](https://frontendmasters.com/courses/javascript-foundations/) workshop. You can find [all my courses here](https://frontendmasters.com/kyle-simpson/).
+También tengo material de capacitación de JS disponible en formato de video a pedido. Enseño cursos a través de [Frontend Masters](https://FrontendMasters.com), como mi [Deep JavaScript Foundations](https://frontendmasters.com/courses/javascript-foundations/) 
+taller. Puedes encontrar [all my courses here](https://frontendmasters.com/kyle-simpson/).
 
-Some of those courses are also distributed on other platforms, like Pluralsight, Lynda.com, and O'Reilly Safari Online.
+Algunos de esos cursos también se distribuyen en otras plataformas, como Pluralsight, Lynda.com, and O'Reilly Safari Online.
 
-## Contributions
+## Aportaciones
 
-Any contributions you make to this effort **are of course greatly appreciated**.
+Cualquier contribución que hagas a este esfuerzo **por supuesto son muy apreciados**.
 
-But **PLEASE** read the [Contributions Guidelines](CONTRIBUTING.md) carefully before submitting a PR.
+**Por favor** lea [Contributions Guidelines](CONTRIBUTING.md) cuidadosamente antes de enviar un PR.
 
 ## License & Copyright
 
-The materials herein are all &copy; 2013-2018 Kyle Simpson.
+Los materiales en este documento son todos &copy; 2013-2018 Kyle Simpson.
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivs 4.0 Unported License</a>.

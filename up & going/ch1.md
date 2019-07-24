@@ -1,35 +1,35 @@
 # You Don't Know JS: Up & Going
 # Chapter 1: Into Programming
 
-Welcome to the *You Don't Know JS* (*YDKJS*) series.
+Bienvenido a la serie *You Don't Know JS* (*YDKJS*).
 
-*Up & Going* is an introduction to several basic concepts of programming -- of course we lean toward JavaScript (often abbreviated JS) specifically -- and how to approach and understand the rest of the titles in this series. Especially if you're just getting into programming and/or JavaScript, this book will briefly explore what you need to get *up and going*.
+*Up & Going* es una introducción a varios conceptos básicos de programación, por supuesto, nos inclinamos hacia JavaScript (a menudo abreviado JS) específicamente, y sobre cómo abordar y entender el resto de los títulos de esta serie. Especialmente si recién te estás iniciando en la programación y/o JavaScript, este libro explorará brevemente lo que necesitas para *ponerlo en marcha*.
 
-This book starts off explaining the basic principles of programming at a very high level. It's mostly intended if you are starting *YDKJS* with little to no prior programming experience, and are looking to these books to help get you started along a path to understanding programming through the lens of JavaScript.
+Este libro comienza explicando los principios básicos de la programación a un nivel muy alto. Es principalmente la intención si está comenzando *YDKJS* con poca o ninguna experiencia previa en programación, y está buscando estos libros para ayudarlo a comenzar un camino hacia la comprensión de la programación a través de la lente de JavaScript.
 
-Chapter 1 should be approached as a quick overview of the things you'll want to learn more about and practice to get *into programming*. There are also many other fantastic programming introduction resources that can help you dig into these topics further, and I encourage you to learn from them in addition to this chapter.
+El Capítulo 1 debe abordarse como una visión general rápida de las cosas sobre las que querrá aprender más y practicar para *introducirse en la programación*. También hay muchos otros recursos fantásticos de introducción a la programación que pueden ayudarte a profundizar en estos temas, y te animo a que aprendas de ellos además de este capítulo.
 
-Once you feel comfortable with general programming basics, Chapter 2 will help guide you to a familiarity with JavaScript's flavor of programming. Chapter 2 introduces what JavaScript is about, but again, it's not a comprehensive guide -- that's what the rest of the *YDKJS* books are for!
+Una vez que se sienta cómodo con los conceptos básicos de programación general, el Capítulo 2 lo ayudará a familiarizarse con la programación de JavaScript. El Capítulo 2 presenta de qué se trata JavaScript, pero, de nuevo, no es una guía completa. ¡Para eso es el resto de los libros * YDKJS *!
 
-If you're already fairly comfortable with JavaScript, first check out Chapter 3 as a brief glimpse of what to expect from *YDKJS*, then jump right in!
+Si ya te sientes bastante cómodo con JavaScript, primero revisa el Capítulo 3 como un breve vistazo de lo que puedes esperar de *YDKJS*, ¡luego salta a la derecha!
 
-## Code
+## Código
 
-Let's start from the beginning.
+Vamos a empezar desde el principio.
 
-A program, often referred to as *source code* or just *code*, is a set of special instructions to tell the computer what tasks to perform. Usually code is saved in a text file, although with JavaScript you can also type code directly into a developer console in a browser, which we'll cover shortly.
+Un programa, a menudo referido como *código fuente* o simplemente *código*, es un conjunto de instrucciones especiales para decirle a la computadora qué tareas debe realizar. Por lo general, el código se guarda en un archivo de texto, aunque con JavaScript también puede escribir el código directamente en una consola de desarrollador en un navegador, que veremos en breve.
 
-The rules for valid format and combinations of instructions is called a *computer language*, sometimes referred to as its *syntax*, much the same as English tells you how to spell words and how to create valid sentences using words and punctuation.
+Las reglas para el formato válido y las combinaciones de instrucciones se denominan *lenguaje informático*, a veces se denomina *sintaxis*, de manera muy similar a como el inglés le dice cómo deletrear palabras y cómo crear oraciones válidas usando palabras y puntuación.
 
 ### Statements
 
-In a computer language, a group of words, numbers, and operators that performs a specific task is a *statement*. In JavaScript, a statement might look as follows:
+En un lenguaje de computadora, un grupo de palabras, números y operadores que realizan una tarea específica es una *statements*. En JavaScript, una declaración puede verse como sigue:
 
 ```js
 a = b * 2;
 ```
 
-The characters `a` and `b` are called *variables* (see "Variables"), which are like simple boxes you can store any of your stuff in. In programs, variables hold values (like the number `42`) to be used by the program. Think of them as symbolic placeholders for the values themselves.
+Los caracteres `a` y` b` se denominan *variables* (consulte "Variables"), que son como cajas simples en los que puede almacenar cualquiera de sus cosas. En los programas, las variables contienen valores (como el número `42`) para Ser utilizado por el programa. Piense en ellos como marcadores simbólicos de los valores en sí mismos.
 
 By contrast, the `2` is just a value itself, called a *literal value*, because it stands alone without being stored in a variable.
 

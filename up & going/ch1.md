@@ -31,72 +31,73 @@ a = b * 2;
 
 Los caracteres `a` y` b` se denominan *variables* (consulte "Variables"), que son como cajas simples en los que puede almacenar cualquiera de sus cosas. En los programas, las variables contienen valores (como el número `42`) para Ser utilizado por el programa. Piense en ellos como marcadores simbólicos de los valores en sí mismos.
 
-By contrast, the `2` is just a value itself, called a *literal value*, because it stands alone without being stored in a variable.
+En contraste, el `2` es solo un valor en sí mismo, llamado *valor literal*, porque está solo, sin ser almacenado en una variable.
 
-The `=` and `*` characters are *operators* (see "Operators") -- they perform actions with the values and variables such as assignment and mathematic multiplication.
+Los caracteres `=` y `*` son *operadores* (consulte "Operadores"): realizan acciones con los valores y variables, como la asignación y la multiplicación matemática.
 
-Most statements in JavaScript conclude with a semicolon (`;`) at the end.
+La mayoría de las declaraciones en JavaScript concluyen con un punto y coma (`;`) al final.
 
-The statement `a = b * 2;` tells the computer, roughly, to get the current value stored in the variable `b`, multiply that value by `2`, then store the result back into another variable we call `a`.
+La declaración `a = b * 2;` le dice a la computadora, aproximadamente, que obtenga el valor actual almacenado en la variable `b`, multiplique ese valor por `2`, luego almacene el resultado en otra variable que llamamos `a` .
 
-Programs are just collections of many such statements, which together describe all the steps that it takes to perform your program's purpose.
+Los programas son solo colecciones de muchas de estas dsentencias, que en conjunto describen todos los pasos necesarios para llevar a cabo el propósito de su programa.
 
-### Expressions
+### Expresiones
 
-Statements are made up of one or more *expressions*. An expression is any reference to a variable or value, or a set of variable(s) and value(s) combined with operators.
+Las sentencias se componen de una o más *expresiones*. Una expresión es cualquier referencia a una variable o valor, o un conjunto de variables y valores combinados con operadores.
 
-For example:
+Por ejemplo:
 
 ```js
 a = b * 2;
 ```
 
-This statement has four expressions in it:
+Esta sentencia tiene cuatro expresiones en ella:
 
-* `2` is a *literal value expression*
-* `b` is a *variable expression*, which means to retrieve its current value
-* `b * 2` is an *arithmetic expression*, which means to do the multiplication
-* `a = b * 2` is an *assignment expression*, which means to assign the result of the `b * 2` expression to the variable `a` (more on assignments later)
+* `2` is a *expresión de valor literal*
+* `b` is a *variable expression*, lo que significa recuperar su valor actual
+* `b * 2` es una *expresión aritmética*, que significa hacer la multiplicación
+* `a = b * 2` es una *expresión de asignación*, que significa asignar el resultado de la expresión `b * 2` a la variable` a` (más adelante las asignaciones)
 
-A general expression that stands alone is also called an *expression statement*, such as the following:
+Una expresión general que está sola también se denomina *sentencia de expresión*, como la siguiente:
 
 ```js
 b * 2;
 ```
 
-This flavor of expression statement is not very common or useful, as generally it wouldn't have any effect on the running of the program -- it would retrieve the value of `b` and multiply it by `2`, but then wouldn't do anything with that result.
+Este tipo de sentencia de expresión no es muy común ni útil, ya que generalmente no tendría ningún efecto en la ejecución del programa; recuperaría el valor de `b` y lo multiplicaría por `2`, pero luego no se hace nada con ese resultado.
 
-A more common expression statement is a *call expression* statement (see "Functions"), as the entire statement is the function call expression itself:
+Una expression statement más común es una *call expression* (consulte "Funciones"), ya que toda la declaración es la expresión de llamada de función en sí misma:
 
 ```js
 alert( a );
 ```
 
-### Executing a Program
+### Ejecutando un programa
 
-How do those collections of programming statements tell the computer what to do? The program needs to be *executed*, also referred to as *running the program*.
+¿Cómo esas colecciones de sentencia de programación le dicen a la computadora qué hacer? El programa necesita ser *ejecutado*, también conocido como *correr el programa*.
 
-Statements like `a = b * 2` are helpful for developers when reading and writing, but are not actually in a form the computer can directly understand. So a special utility on the computer (either an *interpreter* or a *compiler*) is used to translate the code you write into commands a computer can understand.
+Sentencias como `a = b * 2` son útiles para los desarrolladores al leer y escribir, pero en realidad no están en una forma que la computadora pueda entender directamente. Por lo tanto, se utiliza una utilidad especial en la computadora (ya sea un *intérprete* o un *compilador*) para traducir el código que usted escribe en comandos que una computadora puede entender.
 
-For some computer languages, this translation of commands is typically done from top to bottom, line by line, every time the program is run, which is usually called *interpreting* the code.
+Para algunos lenguajes de computadora, esta traducción de comandos se realiza generalmente de arriba a abajo, línea por línea, cada vez que se ejecuta el programa, lo que generalmente se llama *interpretar* el código.
 
-For other languages, the translation is done ahead of time, called *compiling* the code, so when the program *runs* later, what's running is actually the already compiled computer instructions ready to go.
+Para otros idiomas, la traducción se realiza antes de tiempo, llamada *compilar* el código, de modo que cuando el programa *se ejecuta* más tarde, lo que se está ejecutando es en realidad las instrucciones de la computadora ya compiladas listas para usar.
 
-It's typically asserted that JavaScript is *interpreted*, because your JavaScript source code is processed each time it's run. But that's not entirely accurate. The JavaScript engine actually *compiles* the program on the fly and then immediately runs the compiled code.
+Por lo general, se afirma que JavaScript se *interpreta*, porque su código fuente de JavaScript se procesa cada vez que se ejecuta. Pero eso no es del todo exacto. El motor de JavaScript en realidad *compila* el programa sobre la marcha y luego ejecuta inmediatamente el código compilado.
 
-**Note:** For more information on JavaScript compiling, see the first two chapters of the *Scope & Closures* title of this series.
+**Nota:** Para obtener más información sobre la compilación de JavaScript, consulte los dos primeros capítulos de *Scope & Closures* t
+ítulo de esta serie.
 
-## Try It Yourself
+## Inténtalo tú mismo
 
-This chapter is going to introduce each programming concept with simple snippets of code, all written in JavaScript (obviously!).
+Este capítulo presentará cada concepto de programación con simples fragmentos de código, todos escritos en JavaScript (¡obviamente!).
 
-It cannot be emphasized enough: while you go through this chapter -- and you may need to spend the time to go over it several times -- you should practice each of these concepts by typing the code yourself. The easiest way to do that is to open up the developer tools console in your nearest browser (Firefox, Chrome, IE, etc.).
+No se puede enfatizar lo suficiente: mientras repasa este capítulo, y es posible que deba dedicar tiempo a repasarlo varias veces, debe practicar cada uno de estos conceptos escribiendo el código usted mismo. La forma más sencilla de hacerlo es abrir la consola de herramientas para desarrolladores en el navegador más cercano (Firefox, Chrome, IE, etc.).
 
-**Tip:** Typically, you can launch the developer console with a keyboard shortcut or from a menu item. For more detailed information about launching and using the console in your favorite browser, see "Mastering The Developer Tools Console" (http://blog.teamtreehouse.com/mastering-developer-tools-console). To type multiple lines into the console at once, use `<shift> + <enter>` to move to the next new line. Once you hit `<enter>` by itself, the console will run everything you've just typed.
+**Sugerencia:** Normalmente, puede iniciar la consola del desarrollador con un método abreviado de teclado o desde un elemento del menú. Para obtener información más detallada sobre el inicio y el uso de la consola en su navegador favorito, consulte "Mastering The Developer Tools Console" (http://blog.teamtreehouse.com/mastering-developer-tools-console). Para escribir varias líneas en la consola a la vez, use `<shift> + <enter>` para pasar a la siguiente línea. Una vez que haya pulsado `<enter>` por sí mismo, la consola ejecutará todo lo que acaba de escribir.
 
-Let's get familiar with the process of running code in the console. First, I suggest opening up an empty tab in your browser. I prefer to do this by typing `about:blank` into the address bar. Then, make sure your developer console is open, as we just mentioned.
+Familiarizémonos con el proceso de ejecución de código en la consola. En primer lugar, sugiero abrir una pestaña vacía en su navegador. Prefiero hacer esto escribiendo `about:blank` en la barra de direcciones. Luego, asegúrese de que su consola de desarrollador esté abierta, como acabamos de mencionar.
 
-Now, type this code and see how it runs:
+Ahora, escriba este código y vea cómo se ejecuta: 
 
 ```js
 a = 21;

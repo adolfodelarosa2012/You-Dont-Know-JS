@@ -107,7 +107,7 @@ b = a * 2;
 console.log( b );
 ```
 
-Typing the preceding code into the console in Chrome should produce something like the following:
+Escribir el código anterior en la consola en Chrome debería producir algo como lo siguiente:
 
 <img src="fig1.png" width="500">
 

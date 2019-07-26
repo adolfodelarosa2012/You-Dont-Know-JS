@@ -111,35 +111,35 @@ Escribir el código anterior en la consola en Chrome debería producir algo como
 
 <img src="fig1.png" width="500">
 
-Go on, try it. The best way to learn programming is to start coding!
+Vamos, inténtalo. ¡La mejor manera de aprender programación es comenzar a codificar!
 
 ### Output
 
-In the previous code snippet, we used `console.log(..)`. Briefly, let's look at what that line of code is all about.
+En el fragmento de código anterior, usamos `console.log (..)`. Brevemente, veamos de qué se trata esa línea de código.
 
-You may have guessed, but that's exactly how we print text (aka *output* to the user) in the developer console. There are two characteristics of that statement that we should explain.
+Es posible que haya adivinado, pero así es como imprimimos el texto (también conocido como *output* para el usuario) en la consola del desarrollador. Hay dos características de esa declaración que debemos explicar.
 
-First, the `log( b )` part is referred to as a function call (see "Functions"). What's happening is we're handing the `b` variable to that function, which asks it to take the value of `b` and print it to the console.
+Primero, se hace referencia a la parte `log (b)` como una llamada de función (consulte "Funciones"). Lo que está sucediendo es que estamos entregando la variable `b` a esa función, que le pide que tome el valor de `b` y lo imprima en la consola.
 
-Second, the `console.` part is an object reference where the `log(..)` function is located. We cover objects and their properties in more detail in Chapter 2.
+En segundo lugar, la parte `console` es una referencia de objeto donde se encuentra la función `log (..)`. Cubrimos los objetos y sus propiedades con más detalle en el Capítulo 2.
 
-Another way of creating output that you can see is to run an `alert(..)` statement. For example:
+Otra forma de crear resultados que puede ver es ejecutar una instrucción `alert (..)`. Por ejemplo:
 
 ```js
 alert( b );
 ```
 
-If you run that, you'll notice that instead of printing the output to the console, it shows a popup "OK" box with the contents of the `b` variable. However, using `console.log(..)` is generally going to make learning about coding and running your programs in the console easier than using `alert(..)`, because you can output many values at once without interrupting the browser interface.
+Si lo ejecuta, notará que, en lugar de imprimir la salida en la consola, muestra un cuadro emergente "OK" con el contenido de la variable `b`. Sin embargo, el uso de `console.log (..)` hará que aprender a codificar y ejecutar sus programas en la consola sea más fácil que usar `alert (..)`, porque puede generar muchos valores a la vez sin interrumpir el navegador interfaz.
 
-For this book, we'll use `console.log(..)` for output.
+Para este libro, usaremos `console.log (..)` para la salida.
 
 ### Input
 
-While we're discussing output, you may also wonder about *input* (i.e., receiving information from the user).
+Mientras discutimos el resultado, también puede preguntarse sobre *input* (es decir, recibir información del usuario).
 
-The most common way that happens is for the HTML page to show form elements (like text boxes) to a user that they can type into, and then using JS to read those values into your program's variables.
+La forma más común que ocurre es que la página HTML muestre elementos de formulario (como cuadros de texto) a un usuario en el que puedan escribir, y luego usar JS para leer esos valores en las variables de su programa.
 
-But there's an easier way to get input for simple learning and demonstration purposes such as what you'll be doing throughout this book. Use the `prompt(..)` function:
+Pero hay una manera más fácil de obtener información con fines de aprendizaje y demostración simples, como lo que hará a lo largo de este libro. Use la función `prompt (..)`
 
 ```js
 age = prompt( "Please tell me your age:" );
@@ -147,40 +147,40 @@ age = prompt( "Please tell me your age:" );
 console.log( age );
 ```
 
-As you may have guessed, the message you pass to `prompt(..)` -- in this case, `"Please tell me your age:"` -- is printed into the popup.
+Como puede haber adivinado, el mensaje que pasa a `prompt (..)` - en este caso, `"Please tell me your age:"` - está impreso en la ventana emergente.
 
-This should look similar to the following:
+Esto debería verse similar a lo siguiente:
 
 <img src="fig2.png" width="500">
 
-Once you submit the input text by clicking "OK," you'll observe that the value you typed is stored in the `age` variable, which we then *output* with `console.log(..)`:
+Una vez que envíe el texto de entrada haciendo clic en "OK", observará que el valor que ingresó se almacena en la variable `age`, que luego *output* con `console.log(..)`:
 
 <img src="fig3.png" width="500">
 
-To keep things simple while we're learning basic programming concepts, the examples in this book will not require input. But now that you've seen how to use `prompt(..)`, if you want to challenge yourself you can try to use input in your explorations of the examples.
+Para mantener las cosas simples mientras aprendemos los conceptos básicos de programación, los ejemplos en este libro no requerirán input. Pero ahora que has visto cómo usar `prompt (..)`, si quieres desafiarte a ti mismo, puedes intentar usar input en tus exploraciones de los ejemplos.
 
 ## Operators
 
-Operators are how we perform actions on variables and values. We've already seen two JavaScript operators, the `=` and the `*`.
+Los operadores son como realizamos acciones sobre variables y valores. Ya hemos visto dos operadores de JavaScript, el `=` y el `*`.
 
-The `*` operator performs mathematic multiplication. Simple enough, right?
+El operador `*` realiza la multiplicación matemática. Bastante simple, ¿verdad?
 
-The `=` equals operator is used for *assignment* -- we first calculate the value on the *right-hand side* (source value) of the `=` and then put it into the variable that we specify on the *left-hand side* (target variable).
+El operador `=` se usa para la *asignación*: primero calculamos el valor en el *lado derecho* (source value) del `=` y luego lo colocamos en la variable que especificamos en el *lado izquierdo* (target variable).
 
-**Warning:** This may seem like a strange reverse order to specify assignment. Instead of `a = 42`, some might prefer to flip the order so the source value is on the left and the target variable is on the right, like `42 -> a` (this is not valid JavaScript!). Unfortunately, the `a = 42` ordered form, and similar variations, is quite prevalent in modern programming languages. If it feels unnatural, just spend some time rehearsing that ordering in your mind to get accustomed to it.
+**Advertencia:** Esto puede parecer un extraño un orden inverso para especificar la asignación. En lugar de `a = 42`, es posible que algunos prefieran cambiar el orden para que el valor de origen esté a la izquierda y la variable de destino a la derecha, como `42 -> a` (¡esto no es válido en JavaScript!). Desafortunadamente, la forma ordenada `a = 42`, y variaciones similares, son bastante frecuente en los lenguajes de programación modernos. Si se siente antinatural, dedique un poco de tiempo a ensayar ese pedido mentalmente para acostumbrarse a él.
 
-Consider:
+Considerar:
 
 ```js
 a = 2;
 b = a + 1;
 ```
 
-Here, we assign the `2` value to the `a` variable. Then, we get the value of the `a` variable (still `2`), add `1` to it resulting in the value `3`, then store that value in the `b` variable.
+Aquí, asignamos el valor `2` a la variable `a`. Luego, obtenemos el valor de la variable `a` (aún` 2`), le agregamos `1` que resulta en el valor `3`, luego almacenamos ese valor en la variable `b`.
 
-While not technically an operator, you'll need the keyword `var` in every program, as it's the primary way you *declare* (aka *create*) *var*iables (see "Variables").
+Si bien no es técnicamente un operador, necesitará la palabra clave `var` en cada programa, ya que es la forma principal en que *declara* (aka *create*) *var*iables (consulte" Variables ").
 
-You should always declare the variable by name before you use it. But you only need to declare a variable once for each *scope* (see "Scope"); it can be used as many times after that as needed. For example:
+Siempre debe declarar la variable por su nombre antes de usarla. Pero solo necesita declarar una variable una vez para cada *scope alcance* (consulte Scope""); Puede usarse tantas veces después de eso como sea necesario. Por ejemplo:
 
 ```js
 var a = 20;
@@ -191,46 +191,42 @@ a = a * 2;
 console.log( a );	// 42
 ```
 
-Here are some of the most common operators in JavaScript:
+Estos son algunos de los operadores más comunes en JavaScript:
 
-* Assignment: `=` as in `a = 2`.
-* Math: `+` (addition), `-` (subtraction), `*` (multiplication), and `/` (division), as in `a * 3`.
-* Compound Assignment: `+=`, `-=`, `*=`, and `/=` are compound operators that combine a math operation with assignment, as in `a += 2` (same as `a = a + 2`).
-* Increment/Decrement: `++` (increment), `--` (decrement), as in `a++` (similar to `a = a + 1`).
-* Object Property Access: `.` as in `console.log()`.
+* Asignación: `=` como en `a = 2`.
+* Matemáticos: `+` (suma), `-` (resta), `*` (multiplicación), y `/` (división), como en `a * 3`.
+* Asignación compuesta: `+=`, `-=`, `*=` y `/=` son operadores compuestos que combinan una operación matemática con asignación, como en `a += 2` (igual que `a = a + 2`).
+* Incremento/Decremento: `++` (incremento), `--` (decremento), como en `a++` (similar a `a = a + 1`).
+* Acceso a la propiedad del objeto: `.` como en` console.log()`.
+   Los objetos son valores que contienen otros valores en ubicaciones con nombre específicOs llamadas propiedades. `obj.a` significa un objeto llamado `obj` con una propiedad de nombre `a`. Alternativamente, se puede acceder a las propiedades como `obj["a"]`. Vea el capítulo 2.
+* Igualdad: `==` (loose-equals), `===` (strict-equals), `!=` (loose not-equals), `!==` (strict not-equals), como en `a == b`.
+   Consulte "Values & Types" en el Capítulo 2.   
+* Comparación: `<` (less than), `>` (greater than), `<=` (less than or loose-equals), `>=` (greater than or loose-equals), como en `a <= b`.
+   Consulte "Values & Types" en el Capítulo 2.
+* Lógicos: `&&` (and), `||` (or), como en `a || b` que selecciona ya sea `a` *o* `b`.
+   Estos operadores se utilizan para expresar condicionales compuestos (ver "Conditionals"), cuando `a` *o*` b` es verdadero.
+   
+**Nota:** Para más detalles, y cobertura de operadores no mencionados aquí, vea the Mozilla Developer Network (MDN)'s "Expressions and Operators" (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators).
 
-   Objects are values that hold other values at specific named locations called properties. `obj.a` means an object value called `obj` with a property of the name `a`. Properties can alternatively be accessed as `obj["a"]`. See Chapter 2.
-* Equality: `==` (loose-equals), `===` (strict-equals), `!=` (loose not-equals), `!==` (strict not-equals), as in `a == b`.
+## Valores y tipos
 
-   See "Values & Types" and Chapter 2.
-* Comparison: `<` (less than), `>` (greater than), `<=` (less than or loose-equals), `>=` (greater than or loose-equals), as in `a <= b`.
+Si le pregunta a un empleado en una tienda de teléfonos cuánto cuesta un determinado teléfono y dice "noventa y nueve, noventa y nueve" (es decir, $99.99), le están dando una cifra numérica real en dólares que representa lo que necesita pagar (mas impuestos) para comprarlo. Si desea comprar dos de esos teléfonos, puede hacer fácilmente el cálculo mental para duplicar ese valor y obtener $199.98 por su costo.
 
-   See "Values & Types" and Chapter 2.
-* Logical: `&&` (and), `||` (or), as in `a || b` that selects either `a` *or* `b`.
+Si ese mismo empleado toma otro teléfono similar pero dice que es "gratis", no le están dando un número, sino otro tipo de representación de su costo esperado ($0.00): la palabra "gratis" . "
 
-   These operators are used to express compound conditionals (see "Conditionals"), like if either `a` *or* `b` is true.
+Cuando más tarde pregunte si el teléfono incluye un cargador, esa respuesta podría haber sido "sí" o "no".
 
-**Note:** For much more detail, and coverage of operators not mentioned here, see the Mozilla Developer Network (MDN)'s "Expressions and Operators" (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators).
+De manera muy similar, cuando expresas valores en un programa, eliges diferentes representaciones para esos valores en función de lo que planeas hacer con ellos.
 
-## Values & Types
+Estas diferentes representaciones de valores se denominan *types* en la terminología de programación. JavaScript tiene tipos incorporados para cada uno de estos valores denominados *primitive*:
 
-If you ask an employee at a phone store how much a certain phone costs, and they say "ninety-nine, ninety-nine" (i.e., $99.99), they're giving you an actual numeric dollar figure that represents what you'll need to pay (plus taxes) to buy it. If you want to buy two of those phones, you can easily do the mental math to double that value to get $199.98 for your base cost.
+* Cuando necesitas hacer matemáticas, quieres un `number`.
+* Cuando necesita imprimir un valor en la pantalla, necesita un `string` (uno o más caracteres, palabras, oraciones).
+* Cuando necesitas tomar una decisión en tu programa, necesitas un `boolean` (`true` o `false`).
 
-If that same employee picks up another similar phone but says it's "free" (perhaps with air quotes), they're not giving you a number, but instead another kind of representation of your expected cost ($0.00) -- the word "free."
+Los valores que se incluyen directamente en el código fuente se denominan *literals*. Los literales `string` están rodeados por comillas dobles `"..."` o comillas simples (`'...'`) - la única diferencia es la preferencia estilística. Los literales `number` y `boolean` se presentan como están (es decir, `42`,`true`, etc.).
 
-When you later ask if the phone includes a charger, that answer could only have been either "yes" or "no."
-
-In very similar ways, when you express values in a program, you choose different representations for those values based on what you plan to do with them.
-
-These different representations for values are called *types* in programming terminology. JavaScript has built-in types for each of these so called *primitive* values:
-
-* When you need to do math, you want a `number`.
-* When you need to print a value on the screen, you need a `string` (one or more characters, words, sentences).
-* When you need to make a decision in your program, you need a `boolean` (`true` or `false`).
-
-Values that are included directly in the source code are called *literals*. `string` literals are surrounded by double quotes `"..."` or single quotes (`'...'`) -- the only difference is stylistic preference. `number` and `boolean` literals are just presented as is (i.e., `42`, `true`, etc.).
-
-Consider:
+Considerar:
 
 ```js
 "I am a string";
@@ -242,13 +238,13 @@ true;
 false;
 ```
 
-Beyond `string`/`number`/`boolean` value types, it's common for programming languages to provide *arrays*, *objects*, *functions*, and more. We'll cover much more about values and types throughout this chapter and the next.
+Más allá de los tipos de valores `string`/`number`/`boolean`, es común que los lenguajes de programación proporcionen *arrays*, *objects*, *functions* y más. Cubriremos mucho más sobre valores y tipos a lo largo de este capítulo y el siguiente.
 
-### Converting Between Types
+### Conversión Entre Types
 
-If you have a `number` but need to print it on the screen, you need to convert the value to a `string`, and in JavaScript this conversion is called "coercion." Similarly, if someone enters a series of numeric characters into a form on an ecommerce page, that's a `string`, but if you need to then use that value to do math operations, you need to *coerce* it to a `number`.
+Si tiene un `number` pero necesita imprimirlo en la pantalla, debe convertir el valor en un `string`, y en JavaScript esta conversión se llama "coercion". De manera similar, si alguien ingresa una serie de caracteres numéricos en un formulario en una página de comercio electrónico, eso es un `string`, pero si necesita usar ese valor para realizar operaciones matemáticas, debe "forzarlo (coerce)" a un "número" .
 
-JavaScript provides several different facilities for forcibly coercing between *types*. For example:
+JavaScript proporciona varias facilidades diferentes para conversión entre *types*. Por ejemplo:
 
 ```js
 var a = "42";
@@ -258,43 +254,43 @@ console.log( a );	// "42"
 console.log( b );	// 42
 ```
 
-Using `Number(..)` (a built-in function) as shown is an *explicit* coercion from any other type to the `number` type. That should be pretty straightforward.
+Use `Number(..)` (una función incorporada) como se muestra en una  *explicit* coercion de cualquier otro tipo al tipo `number`. Eso debería ser bastante sencillo.
 
-But a controversial topic is what happens when you try to compare two values that are not already of the same type, which would require *implicit* coercion.
+Pero un tema controvertido es qué sucede cuando intentas comparar dos valores que no son del mismo tipo, lo que requeriría una *implicit* coercion.
 
-When comparing the string `"99.99"` to the number `99.99`, most people would agree they are equivalent. But they're not exactly the same, are they? It's the same value in two different representations, two different *types*. You could say they're "loosely equal," couldn't you?
+Al comparar la cadena `"99.99"` con el número `99.99`, la mayoría de la gente estaría de acuerdo en que son equivalentes. Pero no son exactamente iguales, ¿verdad? Es el mismo valor en dos representaciones diferentes, dos tipos *diferentes*. Se podría decir que son "ligeramente iguales", ¿verdad?
 
-To help you out in these common situations, JavaScript will sometimes kick in and *implicitly* coerce values to the matching types.
+Para ayudarlo en estas situaciones comunes, a veces JavaScript activará *implicitly* coerce para convertir los valores a los tipos correspondientes.
 
-So if you use the `==` loose equals operator to make the comparison `"99.99" == 99.99`, JavaScript will convert the left-hand side `"99.99"` to its `number` equivalent `99.99`. The comparison then becomes `99.99 == 99.99`, which is of course `true`.
+Entonces, si usa el operador `==` suelto es igual para hacer la comparación `"99.99"== 99.99`, JavaScript convertirá el lado izquierdo` "99.99" `a su `number` equivalente a `99.99`. La comparación se convierte entonces en '99.99 == 99.99', que por supuesto es `true`.
 
-While designed to help you, implicit coercion can create confusion if you haven't taken the time to learn the rules that govern its behavior. Most JS developers never have, so the common feeling is that implicit coercion is confusing and harms programs with unexpected bugs, and should thus be avoided. It's even sometimes called a flaw in the design of the language.
+Si bien está diseñado para ayudarlo, implicit coercion puede crear confusión si no se ha tomado el tiempo de aprender las reglas que gobiernan su comportamiento. La mayoría de los desarrolladores de JS nunca lo han hecho, por lo que el sentimiento común es que la coacción implícita es confusa y perjudica a los programas con errores inesperados, por lo que debe evitarse. Incluso a veces se le conoce como una falla en el diseño del lenguaje.
 
-However, implicit coercion is a mechanism that *can be learned*, and moreover *should be learned* by anyone wishing to take JavaScript programming seriously. Not only is it not confusing once you learn the rules, it can actually make your programs better! The effort is well worth it.
+Sin embargo, la implicit coercion es un mecanismo que *puede aprenderse* y además *debe ser aprendido* por cualquier persona que desee tomar en serio la programación de JavaScript. ¡No solo no es confuso una vez que aprenda las reglas, sino que también puede mejorar sus programas! El esfuerzo merece la pena.
 
-**Note:** For more information on coercion, see Chapter 2 of this title and Chapter 4 of the *Types & Grammar* title of this series.
+**Nota:** Para obtener más información sobre la coercion, consulte el Capítulo 2 de este título y el Capítulo 4 de los *Types & Grammar* de esta serie.
 
 ## Code Comments
 
-The phone store employee might jot down some notes on the features of a newly released phone or on the new plans her company offers. These notes are only for the employee -- they're not for customers to read. Nevertheless, these notes help the employee do her job better by documenting the hows and whys of what she should tell customers.
+El empleado de la tienda de teléfonos podría anotar algunas notas sobre las características de un teléfono recientemente lanzado o sobre los nuevos planes que ofrece su compañía. Estas notas son solo para el empleado, no para que las lean los clientes. Sin embargo, estas notas ayudan a la empleada a hacer mejor su trabajo al documentar cómo y qué debería decir a los clientes.
 
-One of the most important lessons you can learn about writing code is that it's not just for the computer. Code is every bit as much, if not more, for the developer as it is for the compiler.
+Una de las lecciones más importantes que puede aprender acerca de cómo escribir código es que no es solo para la computadora. El código es tanto, si no más, tanto para el desarrollador como para el compilador.
 
-Your computer only cares about machine code, a series of binary 0s and 1s, that comes from *compilation*. There's a nearly infinite number of programs you could write that yield the same series of 0s and 1s. The choices you make about how to write your program matter -- not only to you, but to your other team members and even to your future self.
+Su computadora solo se preocupa por el código de máquina, una serie de 0 y 1 binarios que proviene de *compilación*. Hay una cantidad casi infinita de programas que podrías escribir que producen la misma serie de 0 y 1. Las decisiones que tome sobre cómo escribir su programa son importantes, no solo para usted, sino también para los demás miembros de su equipo e incluso para su futuro.
 
-You should strive not just to write programs that work correctly, but programs that make sense when examined. You can go a long way in that effort by choosing good names for your variables (see "Variables") and functions (see "Functions").
+Debe esforzarse no solo por escribir programas que funcionen correctamente, sino programas que tengan sentido cuando se examinen. Puede hacer un gran esfuerzo en ese esfuerzo al elegir buenos nombres para sus variables (ver "Variables") y funciones (ver "Functions").
 
-But another important part is code comments. These are bits of text in your program that are inserted purely to explain things to a human. The interpreter/compiler will always ignore these comments.
+Pero otra parte importante son los comentarios en código. Estos son fragmentos de texto en su programa que se insertan únicamente para explicar las cosas a un humano. El intérprete/compilador siempre ignorará estos comentarios.
 
-There are lots of opinions on what makes well-commented code; we can't really define absolute universal rules. But some observations and guidelines are quite useful:
+Hay muchas opiniones sobre lo que hace un código bien comentado; Realmente no podemos definir reglas universales absolutas. Pero algunas observaciones y pautas son bastante útiles:
 
-* Code without comments is suboptimal.
-* Too many comments (one per line, for example) is probably a sign of poorly written code.
-* Comments should explain *why*, not *what*. They can optionally explain *how* if that's particularly confusing.
+* Código sin comentarios es subóptimo.
+* Demasiados comentarios (uno por línea, por ejemplo) es probablemente un signo de código mal escrito.
+* Los comentarios deben explicar *por qué*, no *qué*. Opcionalmente, pueden explicar *cómo* si eso es particularmente confuso.
 
-In JavaScript, there are two types of comments possible: a single-line comment and a multiline comment.
+En JavaScript, hay dos tipos de comentarios posibles: un comentario de una sola línea y un comentario de varias líneas.
 
-Consider:
+Considerar:
 
 ```js
 // This is a single-line comment
@@ -305,17 +301,17 @@ Consider:
                       */
 ```
 
-The `//` single-line comment is appropriate if you're going to put a comment right above a single statement, or even at the end of a line. Everything on the line after the `//` is treated as the comment (and thus ignored by the compiler), all the way to the end of the line. There's no restriction to what can appear inside a single-line comment.
+El comentario de una sola línea `//` es apropiado si va a colocar un comentario justo encima de una sola declaración, o incluso al final de una línea. Todo lo que está en la línea después de `//` se trata como un comentario (y, por lo tanto, el compilador lo ignora), hasta el final de la línea. No hay restricción a lo que puede aparecer dentro de un comentario de una sola línea.
 
-Consider:
+Considerar:
 
 ```js
 var a = 42;		// 42 is the meaning of life
 ```
 
-The `/* .. */` multiline comment is appropriate if you have several lines worth of explanation to make in your comment.
+El comentario multilínea `/ * .. * /` es apropiado si tiene varias líneas para explicar en su comentario.
 
-Here's a common usage of multiline comments:
+Aquí un uso común de comentarios multilínea:
 
 ```js
 /* The following value is used because
@@ -324,7 +320,8 @@ Here's a common usage of multiline comments:
 var a = 42;
 ```
 
-It can also appear anywhere on a line, even in the middle of a line, because the `*/` ends it. For example:
+También puede aparecer en cualquier lugar de una línea, incluso en el centro de una línea, porque el `* /` lo termina. Por ejemplo:
+
 
 ```js
 var a = /* arbitrary value */ 42;
@@ -332,9 +329,9 @@ var a = /* arbitrary value */ 42;
 console.log( a );	// 42
 ```
 
-The only thing that cannot appear inside a multiline comment is a `*/`, because that would be interpreted to end the comment.
+Lo único que no puede aparecer dentro de un comentario multilínea es un `*/`, porque eso se interpretaría para terminar el comentario.
 
-You will definitely want to begin your learning of programming by starting off with the habit of commenting code. Throughout the rest of this chapter, you'll see I use comments to explain things, so do the same in your own practice. Trust me, everyone who reads your code will thank you!
+Definitivamente, deseará comenzar su aprendizaje de la programación comenzando con el hábito de comentar el código. A lo largo del resto de este capítulo, verás que uso comentarios para explicar cosas, así que haz lo mismo en tu propia práctica. Confía en mí, todos los que lean tu código te lo agradecerán.
 
 ## Variables
 

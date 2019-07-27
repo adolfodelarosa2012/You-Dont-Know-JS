@@ -4,16 +4,16 @@
 ## Contenido
 
 * Código
-   * Statements
+   * Sentencias
    * Expresiones
    * Ejecutando un programa
 * Inténtalo tú mismo
    * Output
    * Input
-* Operators
+* Operadores
 * Valores y tipos
    * Conversión Entre Types
-* Code Comments
+* Comentarios
 * Variables
 * Blocks
 * Conditionals
@@ -43,7 +43,7 @@ Un programa, a menudo referido como *código fuente* o simplemente *código*, es
 
 Las reglas para el formato válido y las combinaciones de instrucciones se denominan *lenguaje informático*, a veces se denomina *sintaxis*, de manera muy similar a como el inglés le dice cómo deletrear palabras y cómo crear oraciones válidas usando palabras y puntuación.
 
-### Statements
+### Sentencias
 
 En un lenguaje de computadora, un grupo de palabras, números y operadores que realizan una tarea específica es una *statements*. En JavaScript, una declaración puede verse como sigue:
 
@@ -181,7 +181,7 @@ Una vez que envíe el texto de entrada haciendo clic en "OK", observará que el 
 
 Para mantener las cosas simples mientras aprendemos los conceptos básicos de programación, los ejemplos en este libro no requerirán input. Pero ahora que has visto cómo usar `prompt (..)`, si quieres desafiarte a ti mismo, puedes intentar usar input en tus exploraciones de los ejemplos.
 
-## Operators
+## Operadores
 
 Los operadores son como realizamos acciones sobre variables y valores. Ya hemos visto dos operadores de JavaScript, el `=` y el `*`.
 
@@ -292,7 +292,7 @@ Sin embargo, la implicit coercion es un mecanismo que *puede aprenderse* y adem�
 
 **Nota:** Para obtener más información sobre la coercion, consulte el Capítulo 2 de este título y el Capítulo 4 de los *Types & Grammar* de esta serie.
 
-## Code Comments
+## Comentarios
 
 El empleado de la tienda de teléfonos podría anotar algunas notas sobre las características de un teléfono recientemente lanzado o sobre los nuevos planes que ofrece su compañía. Estas notas son solo para el empleado, no para que las lean los clientes. Sin embargo, estas notas ayudan a la empleada a hacer mejor su trabajo al documentar cómo y qué debería decir a los clientes.
 
@@ -357,17 +357,17 @@ Definitivamente, deseará comenzar su aprendizaje de la programación comenzando
 
 ## Variables
 
-Most useful programs need to track a value as it changes over the course of the program, undergoing different operations as called for by your program's intended tasks.
+La mayoría de los programas útiles deben rastrear un valor a medida que cambia a lo largo del programa, sometiéndose a diferentes operaciones según lo requieran las tareas previstas de su programa.
 
-The easiest way to go about that in your program is to assign a value to a symbolic container, called a *variable* -- so called because the value in this container can *vary* over time as needed.
+La forma más fácil de hacerlo en su programa es asignar un valor a un contenedor simbólico, llamado *variable*, llamado así porque el valor en este contenedor puede *variar* con el tiempo según sea necesario.
 
-In some programming languages, you declare a variable (container) to hold a specific type of value, such as `number` or `string`. *Static typing*, otherwise known as *type enforcement*, is typically cited as a benefit for program correctness by preventing unintended value conversions.
+En algunos lenguajes de programación, declara una variable (contenedor) para mantener un tipo específico de valor, como `number` o `string`. *Static typing*, también conocida como *type enforcement*, se cita normalmente como un beneficio para la corrección del programa al evitar conversiones de valores no deseadas.
 
-Other languages emphasize types for values instead of variables. *Weak typing*, otherwise known as *dynamic typing*, allows a variable to hold any type of value at any time. It's typically cited as a benefit for program flexibility by allowing a single variable to represent a value no matter what type form that value may take at any given moment in the program's logic flow.
+Otros lenguajes enfatizan tipos para valores en vez de variables. *Weak typing*, también conocida como *dynamic typing*, permite que una variable retenga cualquier tipo de valor en cualquier momento. Por lo general, se cita como un beneficio para la flexibilidad del programa al permitir que una sola variable represente un valor, independientemente del tipo de forma que ese valor pueda tomar en cualquier momento dado en el flujo lógico del programa.
 
-JavaScript uses the latter approach, *dynamic typing*, meaning variables can hold values of any *type* without any *type* enforcement.
+JavaScript utiliza este último enfoque, *dynamic typing*, lo que significa que las variables pueden contener valores de cualquier *tipo* sin ningún  *type* enforcement.
 
-As mentioned earlier, we declare a variable using the `var` statement -- notice there's no other *type* information in the declaration. Consider this simple program:
+Como se mencionó anteriormente, declaramos una variable usando la declaración `var` - note que no hay otra información de *type* en la declaración. Considere este programa simple:
 
 ```js
 var amount = 99.99;
@@ -383,23 +383,23 @@ amount = "$" + String( amount );
 console.log( amount );		// "$199.98"
 ```
 
-The `amount` variable starts out holding the number `99.99`, and then holds the `number` result of `amount * 2`, which is `199.98`.
+La variable `amount` comienza manteniendo el número `99.99`, y luego contiene el resultado de `number` de `amount * 2`, que es `199.98`.
 
-The first `console.log(..)` command has to *implicitly* coerce that `number` value to a `string` to print it out.
+El primer comando `console.log (..)` tiene que *implícitamente* forzar ese valor `number` a un `string` para imprimirlo.
 
-Then the statement `amount = "$" + String(amount)` *explicitly* coerces the `199.98` value to a `string` and adds a `"$"` character to the beginning. At this point, `amount` now holds the `string` value `"$199.98"`, so the second `console.log(..)` statement doesn't need to do any coercion to print it out.
+Luego, la declaración `amount = "$" + String(amount)` *explícitamente* obliga al valor `199.98` convertirse en un `string` y agrega un carácter `"$"` al principio. En este punto, `amount` ahora contiene el valor `string` `"$199.98"`, por lo que la segunda instrucción `console.log (..)` no necesita hacer ninguna coercion para imprimirlo.
 
-JavaScript developers will note the flexibility of using the `amount` variable for each of the `99.99`, `199.98`, and the `"$199.98"` values. Static-typing enthusiasts would prefer a separate variable like `amountStr` to hold the final `"$199.98"` representation of the value, because it's a different type.
+Los desarrolladores de JavaScript notarán la flexibilidad de usar la variable `amount` para cada uno de los valores `99.99`, `199.98` y `"$199.98"`. Los entusiastas de la escritura estática preferirían una variable separada como `amountStr` para mantener la representación final del valor de `"$199.98"`, porque es un tipo diferente.
 
-Either way, you'll note that `amount` holds a running value that changes over the course of the program, illustrating the primary purpose of variables: managing program *state*.
+De cualquier manera, notará que `amount` tiene un valor que cambia a lo largo del programa, ilustrando el propósito principal de las variables: administrar el *state* del programa.
 
-In other words, *state* is tracking the changes to values as your program runs.
+En otras palabras, *state* está rastreando los cambios en los valores mientras se ejecuta su programa.
 
-Another common usage of variables is for centralizing value setting. This is more typically called *constants*, when you declare a variable with a value and intend for that value to *not change* throughout the program.
+Otro uso común de las variables es para centralizar la configuración de valores. Esto se suele llamar *constants*, cuando se declara una variable con un valor y se pretende que ese valor *no cambie* en todo el programa.
 
-You declare these *constants*, often at the top of a program, so that it's convenient for you to have one place to go to alter a value if you need to. By convention, JavaScript variables as constants are usually capitalized, with underscores `_` between multiple words.
+Usted declara estas *constants*, a menudo en la parte superior de un programa, por lo que es conveniente que tenga un lugar donde ir para modificar un valor si lo necesita. Por convención, las variables de JavaScript como constantes usualmente están en mayúsculas, con guiones bajos entre varias palabras.
 
-Here's a silly example:
+Aquí hay un ejemplo tonto:
 
 ```js
 var TAX_RATE = 0.08;	// 8% sales tax
@@ -414,11 +414,11 @@ console.log( amount );				// 215.9784
 console.log( amount.toFixed( 2 ) );	// "215.98"
 ```
 
-**Note:** Similar to how `console.log(..)` is a function `log(..)` accessed as an object property on the `console` value, `toFixed(..)` here is a function that can be accessed on `number` values. JavaScript `number`s aren't automatically formatted for dollars -- the engine doesn't know what your intent is and there's no type for currency. `toFixed(..)` lets us specify how many decimal places we'd like the `number` rounded to, and it produces the `string` as necessary.
+**Nota:** Similar a cómo `console.log (..)` es una función `log(..)` a la que se accede como una propiedad de objeto en el valor de `console`, `toFixed(..)` es una función que puede acceder a los valores de `número`. Los "números" de JavaScript no se formatean automáticamente en dólares: el motor no sabe cuál es su intención y no existe un tipo de moneda. `toFixed(..)` nos permite especificar cuántos decimales nos gustaría redondear a `number`, y produce la `cadena` según sea necesario.
 
-The `TAX_RATE` variable is only *constant* by convention -- there's nothing special in this program that prevents it from being changed. But if the city raises the sales tax rate to 9%, we can still easily update our program by setting the `TAX_RATE` assigned value to `0.09` in one place, instead of finding many occurrences of the value `0.08` strewn throughout the program and updating all of them.
+La variable `TAX_RATE` es solo *constante* por convención - no hay nada especial en este programa que impida que se cambie. Pero si la ciudad eleva la tasa del impuesto a las ventas al 9%, aún podemos actualizar nuestro programa fácilmente al establecer el valor asignado `TAX_RATE` en `0.09` en un solo lugar, en lugar de encontrar muchas apariciones del valor `0.08` esparcidas en todo el Programa y actualización de todos ellos.
 
-The newest version of JavaScript at the time of this writing (commonly called "ES6") includes a new way to declare *constants*, by using `const` instead of `var`:
+La versión más reciente de JavaScript en el momento de escribir esto (comúnmente llamada "ES6") incluye una nueva forma de declarar *constants*, usando `const` en lugar de `var`:
 
 ```js
 // as of ES6:
@@ -429,17 +429,17 @@ var amount = 99.99;
 // ..
 ```
 
-Constants are useful just like variables with unchanged values, except that constants also prevent accidentally changing value somewhere else after the initial setting. If you tried to assign any different value to `TAX_RATE` after that first declaration, your program would reject the change (and in strict mode, fail with an error -- see "Strict Mode" in Chapter 2).
+Las constantes son útiles al igual que las variables con valores sin cambios, excepto que las constantes también impiden cambiar accidentalmente el valor en otro lugar después de la configuración inicial. Si intentó asignar un valor diferente a `TAX_RATE` después de esa primera declaración, su programa rechazará el cambio (y en modo estricto, fallará con un error, consulte "Strict Mode" en el Capítulo 2).
 
-By the way, that kind of "protection" against mistakes is similar to the static-typing type enforcement, so you can see why static types in other languages can be attractive!
+Por cierto, ese tipo de "protección" contra los errores es similar a la aplicación del tipo de tipificación estática, por lo que puede ver por qué los tipos estáticos en otros idiomas pueden ser atractivos.
 
-**Note:** For more information about how different values in variables can be used in your programs, see the *Types & Grammar* title of this series.
+**Nota:** Para obtener más información sobre cómo se pueden usar diferentes valores en variables en sus programas, consulte el título *Types & Grammar* de esta serie.
 
-## Blocks
+## Bloques
 
-The phone store employee must go through a series of steps to complete the checkout as you buy your new phone.
+El empleado de la tienda de teléfonos debe seguir una serie de pasos para completar la compra a medida que compra su nuevo teléfono.
 
-Similarly, in code we often need to group a series of statements together, which we often call a *block*. In JavaScript, a block is defined by wrapping one or more statements inside a curly-brace pair `{ .. }`. Consider:
+De manera similar, en el código a menudo necesitamos agrupar una serie de sentencias, lo que a menudo llamamos un *block*. En JavaScript, un bloque se define envolviendo una o más declaraciones dentro de un par de llaves `{ .. }`. Considerar:
 
 ```js
 var amount = 99.99;
@@ -451,7 +451,7 @@ var amount = 99.99;
 }
 ```
 
-This kind of standalone `{ .. }` general block is valid, but isn't as commonly seen in JS programs. Typically, blocks are attached to some other control statement, such as an `if` statement (see "Conditionals") or a loop (see "Loops"). For example:
+Este tipo de bloque general `{ .. }` independiente es válido, pero no es tan comúnmente visto en los programas JS. Normalmente, los bloques se adjuntan a alguna otra instrucción de control, como una instrucción `if` (consulte "Conditionals") o un bucle (consulte "Loops"). Por ejemplo:
 
 ```js
 var amount = 99.99;
@@ -463,17 +463,17 @@ if (amount > 10) {			// <-- block attached to `if`
 }
 ```
 
-We'll explain `if` statements in the next section, but as you can see, the `{ .. }` block with its two statements is attached to `if (amount > 10)`; the statements inside the block will only be processed if the conditional passes.
+Explicaremos las declaraciones `if` en la siguiente sección, pero como puede ver, el bloque `{ .. }` con sus dos declaraciones se adjunta a `if (amount > 10)`; Las declaraciones dentro del bloque solo se procesarán si el condicional pasa.
 
-**Note:** Unlike most other statements like `console.log(amount);`, a block statement does not need a semicolon (`;`) to conclude it.
+**Nota:** A diferencia de la mayoría de las otras declaraciones como `console.log(amount);`, una declaración de bloque no necesita un punto y coma (`;`) para concluirla.
 
-## Conditionals
+## Condicionales
 
-"Do you want to add on the extra screen protectors to your purchase, for $9.99?" The helpful phone store employee has asked you to make a decision. And you may need to first consult the current *state* of your wallet or bank account to answer that question. But obviously, this is just a simple "yes or no" question.
+"¿Desea agregar protectores de pantalla adicionales a su compra, por $9.99?" El amable empleado de la tienda telefónica le ha pedido que tome una decisión. Y es posible que deba consultar primero el *state* actual de su billetera o cuenta bancaria para responder a esa pregunta. Pero obviamente, esto es solo una simple pregunta de "sí o no".
 
-There are quite a few ways we can express *conditionals* (aka decisions) in our programs.
+Hay bastantes formas en que podemos expresar *conditionals* (también conocidas como decisiones) en nuestros programas.
 
-The most common one is the `if` statement. Essentially, you're saying, "*If* this condition is true, do the following...". For example:
+El más común es la instrucción `if`. Esencialmente, estás diciendo: "*Si* esta condición es verdadera, haz lo siguiente ...". Por ejemplo:
 
 ```js
 var bank_balance = 302.13;
@@ -484,9 +484,9 @@ if (amount < bank_balance) {
 }
 ```
 
-The `if` statement requires an expression in between the parentheses `( )` that can be treated as either `true` or `false`. In this program, we provided the expression `amount < bank_balance`, which indeed will either evaluate to `true` or `false` depending on the amount in the `bank_balance` variable.
+La declaración `if` requiere una expresión entre los paréntesis `() `que se puede tratar como `true` o `false`. En este programa, proporcionamos la expresión `amount <bank_balance`, que de hecho evaluará a `true` o `false` dependiendo de la cantidad en la variable `bank_balance`.
 
-You can even provide an alternative if the condition isn't true, called an `else` clause. Consider:
+Incluso puede proporcionar una alternativa si la condición no es verdadera, denominada cláusula `else`. Considerar:
 
 ```js
 const ACCESSORY_PRICE = 9.99;
@@ -507,25 +507,25 @@ else {
 }
 ```
 
-Here, if `amount < bank_balance` is `true`, we'll print out `"I'll take the accessory!"` and add the `9.99` to our `amount` variable. Otherwise, the `else` clause says we'll just politely respond with `"No, thanks."` and leave `amount` unchanged.
+Aquí, si `amount <bank_balance` es `true`, imprimiremos `"I'll take the accessory!"` Y agregaremos el `9.99` a nuestra variable `amount`. De lo contrario, la cláusula `else` dice que solo responderemos cortésmente con `"No, thanks."` y dejaremos `amount` sin cambios.
 
-As we discussed in "Values & Types" earlier, values that aren't already of an expected type are often coerced to that type. The `if` statement expects a `boolean`, but if you pass it something that's not already `boolean`, coercion will occur.
+Como hemos comentado en "Values & Types" anteriormente, los valores que aún no son del tipo esperado a menudo son obligados a ese tipo. La instrucción `if` espera un `boolean`, pero si le pasas algo que aún no es `boolean`, se producirá la coacción.
 
-JavaScript defines a list of specific values that are considered "falsy" because when coerced to a `boolean`, they become `false` -- these include values like `0` and `""`. Any other value not on the "falsy" list is automatically "truthy" -- when coerced to a `boolean` they become `true`. Truthy values include things like `99.99` and `"free"`. See "Truthy & Falsy" in Chapter 2 for more information.
+JavaScript define una lista de valores específicos que se consideran "falsos" porque cuando se les convierte a `boolean`, se convierten en `false`, estos incluyen valores como `0` y `""`. Cualquier otro valor que no esté en la lista de "falsos" es automáticamente "verdadero": cuando se transforman a un "booleano" se convierten en "verdaderos". Los valores de verdad incluyen cosas como `99.99` y `"free"`. Consulte "Truthy & Falsy" en el Capítulo 2 para obtener más información.
 
-*Conditionals* exist in other forms besides the `if`. For example, the `switch` statement can be used as a shorthand for a series of `if..else` statements (see Chapter 2). Loops (see "Loops") use a *conditional* to determine if the loop should keep going or stop.
+*Conditionals* existen en otras formas además del `if`. Por ejemplo, la instrucción `switch` se puede usar como una forma abreviada de una serie de instrucciones `if..else` (ver Capítulo 2). Los bucles (consulte "Bucles") usan un *condicional* para determinar si el bucle debe continuar o detenerse.
 
-**Note:** For deeper information about the coercions that can occur implicitly in the test expressions of *conditionals*, see Chapter 4 of the *Types & Grammar* title of this series.
+**Nota:** Para obtener información más detallada sobre las coerciones que pueden ocurrir implícitamente en las expresiones de prueba de *conditionals*, consulte el Capítulo 4 del título *Types & Grammar* de esta serie.
 
 ## Loops
 
-During busy times, there's a waiting list for customers who need to speak to the phone store employee. While there's still people on that list, she just needs to keep serving the next customer.
+Durante las horas punta, hay una lista de espera para los clientes que necesitan hablar con el empleado de la tienda telefónica. Si bien todavía hay personas en esa lista, solo necesita seguir sirviendo al próximo cliente.
 
-Repeating a set of actions until a certain condition fails -- in other words, repeating only while the condition holds -- is the job of programming loops; loops can take different forms, but they all satisfy this basic behavior.
+Repetir un conjunto de acciones hasta que falla una determinada condición, en otras palabras, repetir solo mientras la condición se mantiene, es el trabajo de programar los bucles; Los bucles pueden tomar diferentes formas, pero todos satisfacen este comportamiento básico.
 
-A loop includes the test condition as well as a block (typically as `{ .. }`). Each time the loop block executes, that's called an *iteration*.
+Un bucle incluye la condición de prueba así como un bloque (normalmente como `{ .. }`). Cada vez que se ejecuta el bloque de bucle, se denomina *iteration*.
 
-For example, the `while` loop and the `do..while` loop forms illustrate the concept of repeating a block of statements until a condition no longer evaluates to `true`:
+Por ejemplo, el bucle `while` y las formas de bucle `do..while` ilustran el concepto de repetir un bloque de declaraciones hasta que una condición ya no se evalúa como `true`:
 
 ```js
 while (numOfCustomers > 0) {
@@ -547,19 +547,19 @@ do {
 } while (numOfCustomers > 0);
 ```
 
-The only practical difference between these loops is whether the conditional is tested before the first iteration (`while`) or after the first iteration (`do..while`).
+La única diferencia práctica entre estos bucles es si el condicional se prueba antes de la primera iteración (`while`) o después de la primera iteración (`do..while`).
 
-In either form, if the conditional tests as `false`, the next iteration will not run. That means if the condition is initially `false`, a `while` loop will never run, but a `do..while` loop will run just the first time.
+En cualquiera de las formas, si las pruebas condicionales son falsas, la siguiente iteración no se ejecutará. Eso significa que si la condición inicialmente es "falsa", un bucle `while` nunca se ejecutará, pero un bucle `do..while` se ejecutará solo la primera vez.
 
-Sometimes you are looping for the intended purpose of counting a certain set of numbers, like from `0` to `9` (ten numbers). You can do that by setting a loop iteration variable like `i` at value `0` and incrementing it by `1` each iteration.
+A veces, realiza un bucle con el propósito previsto de contar un determinado conjunto de números, como de `0` a` 9` (diez números). Puede hacerlo configurando una variable de iteración de bucle como `i` en el valor `0` e incrementándola en `1` en cada iteración.
 
-**Warning:** For a variety of historical reasons, programming languages almost always count things in a zero-based fashion, meaning starting with `0` instead of `1`. If you're not familiar with that mode of thinking, it can be quite confusing at first. Take some time to practice counting starting with `0` to become more comfortable with it!
+**Advertencia:** Por razones históricas, los lenguajes de programación casi siempre cuentan las cosas de forma cero, es decir, comienzan con `0` en lugar de `1`. Si no está familiarizado con ese modo de pensar, puede ser bastante confuso al principio. ¡Tómese un tiempo para practicar el conteo comenzando con `0` para sentirse más cómodo con él!
 
-The conditional is tested on each iteration, much as if there is an implied `if` statement inside the loop.
+El condicional se prueba en cada iteración, como si hubiera una declaración implícita `if` dentro del bucle.
 
-We can use JavaScript's `break` statement to stop a loop. Also, we can observe that it's awfully easy to create a loop that would otherwise run forever without a `break`ing mechanism.
+Podemos usar la declaración `break` de JavaScript para detener un bucle. Además, podemos observar que es muy fácil crear un bucle que, de lo contrario, se ejecutaría para siempre sin un mecanismo de "interrupción".
 
-Let's illustrate:
+Vamos a ilustrar:
 
 ```js
 var i = 0;
@@ -577,9 +577,9 @@ while (true) {
 // 0 1 2 3 4 5 6 7 8 9
 ```
 
-**Warning:** This is not necessarily a practical form you'd want to use for your loops. It's presented here for illustration purposes only.
+**Advertencia:** Esta no es necesariamente una forma práctica que querría usar para sus bucles. Se presenta aquí con fines ilustrativos únicamente.
 
-While a `while` (or `do..while`) can accomplish the task manually, there's another syntactic form called a `for` loop for just that purpose:
+Mientras que un `while` (o `do..while`) puede realizar la tarea manualmente, hay otra forma sintáctica llamada bucle `for` para ese propósito:
 
 ```js
 for (var i = 0; i <= 9; i = i + 1) {
@@ -588,11 +588,11 @@ for (var i = 0; i <= 9; i = i + 1) {
 // 0 1 2 3 4 5 6 7 8 9
 ```
 
-As you can see, in both cases the conditional `i <= 9` is `true` for the first 10 iterations (`i` of values `0` through `9`) of either loop form, but becomes `false` once `i` is value `10`.
+Como puede ver, en ambos casos la condicional `i <= 9` es `true` para las primeras 10 iteraciones (`i` de valores` 0` a `9`) de cualquiera de las formas de bucle, pero se convierte en `false` una vez `i` es el valor `10`.
 
-The `for` loop has three clauses: the initialization clause (`var i=0`), the conditional test clause (`i <= 9`), and the update clause (`i = i + 1`). So if you're going to do counting with your loop iterations, `for` is a more compact and often easier form to understand and write.
+El bucle `for` tiene tres cláusulas: la cláusula de inicialización (`var i = 0`), la cláusula de prueba condicional (`i <= 9`) y la cláusula de actualización (`i = i + 1`). Por lo tanto, si va a contar con sus iteraciones de bucle, `for` es una forma más compacta y, a menudo, más fácil de entender y escribir.
 
-There are other specialized loop forms that are intended to iterate over specific values, such as the properties of an object (see Chapter 2) where the implied conditional test is just whether all the properties have been processed. The "loop until a condition fails" concept holds no matter what the form of the loop.
+Existen otras formas especializadas de bucle que pretenden iterar sobre valores específicos, como las propiedades de un objeto (ver Capítulo 2) donde la prueba condicional implícita es solo si todas las propiedades se han procesado. El concepto de "bucle hasta que una condición falla" se mantiene independientemente de la forma del bucle.
 
 ## Functions
 

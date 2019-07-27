@@ -3,17 +3,17 @@
 
 ## Contenido
 
-* Código
-   * Sentencias
-   * Expresiones
-   * Ejecutando un programa
-* Inténtalo tú mismo
+* Code
+   * Statements
+   * Expressions
+   * Executing a Program
+* Try It Yourself
    * Output
    * Input
-* Operadores
-* Valores y tipos
-   * Conversión Entre Types
-* Comentarios
+* Operators
+* Values & Types
+   * Converting Between Types
+* Code Comments
 * Variables
 * Blocks
 * Conditionals

@@ -4,7 +4,7 @@
 ## Contenido
 
 * Código
-   Statements
+   * Statements
    Expresiones
    Ejecutando un programa
 * Inténtalo tú mismo

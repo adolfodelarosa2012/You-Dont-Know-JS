@@ -5,21 +5,21 @@
 
 * Código
    * Statements
-   Expresiones
-   Ejecutando un programa
+   * Expresiones
+   * Ejecutando un programa
 * Inténtalo tú mismo
-   Output
-   Input
+   * Output
+   * Input
 * Operators
 * Valores y tipos
-   Conversión Entre Types
+   * Conversión Entre Types
 * Code Comments
 * Variables
 * Blocks
 * Conditionals
 * Loops
 * Functions
-   Scope
+   * Scope
 * Practice
 * Review
 

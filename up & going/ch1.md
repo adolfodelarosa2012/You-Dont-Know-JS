@@ -1,6 +1,28 @@
 # You Don't Know JS: Up & Going
 # Chapter 1: Into Programming
 
+## Contenido
+
+* Código
+   Statements
+   Expresiones
+   Ejecutando un programa
+* Inténtalo tú mismo
+   Output
+   Input
+* Operators
+* Valores y tipos
+   Conversión Entre Types
+* Code Comments
+* Variables
+* Blocks
+* Conditionals
+* Loops
+* Functions
+   Scope
+* Practice
+* Review
+
 Bienvenido a la serie *You Don't Know JS* (*YDKJS*).
 
 *Up & Going* es una introducción a varios conceptos básicos de programación, por supuesto, nos inclinamos hacia JavaScript (a menudo abreviado JS) específicamente, y sobre cómo abordar y entender el resto de los títulos de esta serie. Especialmente si recién te estás iniciando en la programación y/o JavaScript, este libro explorará brevemente lo que necesitas para *ponerlo en marcha*.

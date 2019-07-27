@@ -31,28 +31,28 @@
 * Non-JavaScript
 * Review
 
-In the previous chapter, I introduced the basic building blocks of programming, such as variables, loops, conditionals, and functions. Of course, all the code shown has been in JavaScript. But in this chapter, we want to focus specifically on things you need to know about JavaScript to get up and going as a JS developer.
+En el capítulo anterior, introduje los componentes básicos de la programación, como variables, bucles, condicionales y funciones. Por supuesto, todo el código mostrado ha sido en JavaScript. Pero en este capítulo, queremos centrarnos específicamente en las cosas que necesita saber sobre JavaScript para ponerse en marcha como desarrollador de JS.
 
-We will introduce quite a few concepts in this chapter that will not be fully explored until subsequent *YDKJS* books. You can think of this chapter as an overview of the topics covered in detail throughout the rest of this series.
+En este capítulo presentaremos algunos conceptos que no se explorarán completamente hasta los siguientes libros *YDKJS*. Puede considerar este capítulo como una visión general de los temas tratados en detalle a lo largo del resto de esta serie.
 
-Especially if you're new to JavaScript, you should expect to spend quite a bit of time reviewing the concepts and code examples here multiple times. Any good foundation is laid brick by brick, so don't expect that you'll immediately understand it all the first pass through.
+Especialmente si eres nuevo en JavaScript, deberías pasar bastante tiempo revisando los conceptos y ejemplos de código aquí varias veces. Cualquier buena base se coloca ladrillo por ladrillo, así que no espere que lo comprenda de inmediato en todo el primer paso.
 
-Your journey to deeply learn JavaScript starts here.
+Su viaje para aprender profundamente JavaScript comienza aquí.
 
-**Note:** As I said in Chapter 1, you should definitely try all this code yourself as you read and work through this chapter. Be aware that some of the code here assumes capabilities introduced in the newest version of JavaScript at the time of this writing (commonly referred to as "ES6" for the 6th edition of ECMAScript -- the official name of the JS specification). If you happen to be using an older, pre-ES6 browser, the code may not work. A recent update of a modern browser (like Chrome, Firefox, or IE) should be used.
+**Nota:** Como dije en el Capítulo 1, definitivamente debes probar todo este código mientras lees y trabajas en este capítulo. Tenga en cuenta que parte del código aquí asume las capacidades introducidas en la versión más reciente de JavaScript en el momento de escribir este artículo (comúnmente denominado "ES6" para la 6ta edición de ECMAScript, el nombre oficial de la especificación JS). Si está utilizando un navegador anterior, ES6, es posible que el código no funcione. Se debe utilizar una actualización reciente de un navegador moderno (como Chrome, Firefox o IE).
 
 ## Values & Types
 
-As we asserted in Chapter 1, JavaScript has typed values, not typed variables. The following built-in types are available:
+Como afirmamos en el Capítulo 1, JavaScript ha escrito valores, no variables. Los siguientes tipos incorporados están disponibles:
 
 * `string`
 * `number`
 * `boolean`
-* `null` and `undefined`
+* `null` y `undefined`
 * `object`
-* `symbol` (new to ES6)
+* `symbol` (nuevo en ES6)
 
-JavaScript provides a `typeof` operator that can examine a value and tell you what type it is:
+JavaScript proporciona un operador `typeof` que puede examinar un valor y decirle qué tipo es:
 
 ```js
 var a;
@@ -68,7 +68,7 @@ a = true;
 typeof a;				// "boolean"
 
 a = null;
-typeof a;				// "object" -- weird, bug
+typeof a;				// "object" -- weird, bug (raro, error)
 
 a = undefined;
 typeof a;				// "undefined"
@@ -77,19 +77,19 @@ a = { b: "c" };
 typeof a;				// "object"
 ```
 
-The return value from the `typeof` operator is always one of six (seven as of ES6! - the "symbol" type) string values. That is, `typeof "abc"` returns `"string"`, not `string`.
+El valor de retorno del operador `typeof` es siempre uno de seis (siete a partir de ES6! - el tipo "symbol") valores de cadena. Es decir, `typeof "abc"` devuelve `"string"`, no `string`.
 
-Notice how in this snippet the `a` variable holds every different type of value, and that despite appearances, `typeof a` is not asking for the "type of `a`", but rather for the "type of the value currently in `a`." Only values have types in JavaScript; variables are just simple containers for those values.
+Observe cómo en este fragmento la variable `a` contiene cada tipo diferente de valor, y que a pesar de las apariencias, `typeof a` no solicita el "tipo de `a`", sino el "tipo del valor actualmente en `a`". Sólo los valores tienen tipos en JavaScript; Las variables son simples contenedores para esos valores.
 
-`typeof null` is an interesting case, because it errantly returns `"object"`, when you'd expect it to return `"null"`.
+`typeof null` es un caso interesante, porque retorna de forma errante `"object"`, cuando esperas que devuelva `"null"`.
 
-**Warning:** This is a long-standing bug in JS, but one that is likely never going to be fixed. Too much code on the Web relies on the bug and thus fixing it would cause a lot more bugs!
+**Advertencia:** Este es un error de larga duración en JS, pero es probable que nunca se solucione. ¡Demasiado código en la Web depende del error y, por lo tanto, solucionarlo causaría muchos más errores!
 
-Also, note `a = undefined`. We're explicitly setting `a` to the `undefined` value, but that is behaviorally no different from a variable that has no value set yet, like with the `var a;` line at the top of the snippet. A variable can get to this "undefined" value state in several different ways, including functions that return no values and usage of the `void` operator.
+Además, tenga en cuenta `a = undefined`. Estamos estableciendo explícitamente `a` en el valor` undefined`, pero eso no es diferente en el comportamiento de una variable que aún no tiene un valor establecido, como con la línea `var a;` en la parte superior del fragmento. Una variable puede llegar a este estado de valor "indefinido" de varias maneras diferentes, incluidas las funciones que no devuelven ningún valor y el uso del operador `void`.
 
 ### Objects
 
-The `object` type refers to a compound value where you can set properties (named locations) that each hold their own values of any type. This is perhaps one of the most useful value types in all of JavaScript.
+El tipo `object` se refiere a un valor compuesto en el que puede establecer propiedades (ubicaciones con nombre) para que cada una tenga sus propios valores de cualquier tipo. Este es quizás uno de los tipos de valor más útiles en todo JavaScript.
 
 ```js
 var obj = {
@@ -107,15 +107,15 @@ obj["b"];	// 42
 obj["c"];	// true
 ```
 
-It may be helpful to think of this `obj` value visually:
+Puede ser útil pensar en este valor `obj` visualmente:
 
 <img src="fig4.png">
 
-Properties can either be accessed with *dot notation* (i.e., `obj.a`) or *bracket notation* (i.e., `obj["a"]`). Dot notation is shorter and generally easier to read, and is thus preferred when possible.
+Se puede acceder a las propiedades con *notación de punto (dot notation)* (es decir, `obj.a`) o con *notación de corchete (bracket notation)* (es decir, `obj ["a"]`). La notación de puntos es más corta y generalmente más fácil de leer, y por lo tanto se prefiere cuando es posible.
 
-Bracket notation is useful if you have a property name that has special characters in it, like `obj["hello world!"]` -- such properties are often referred to as *keys* when accessed via bracket notation. The `[ ]` notation requires either a variable (explained next) or a `string` *literal* (which needs to be wrapped in `" .. "` or `' .. '`).
+La notación de corchetes es útil si tiene un nombre de propiedad que tiene caracteres especiales, como `obj ["hello world!"]` - estas propiedades a menudo se conocen como *keys* cuando se accede a través de la notación de corchetes. La notación `[ ]` requiere una variable (explicada a continuación) o un `string` *literal* (que debe estar envuelta en `" .. "` o `' .. '`).
 
-Of course, bracket notation is also useful if you want to access a property/key but the name is stored in another variable, such as:
+Por supuesto, la notación de corchetes también es útil si desea acceder a una property/key pero el nombre se almacena en otra variable, como:
 
 ```js
 var obj = {
@@ -129,13 +129,13 @@ obj[b];			// "hello world"
 obj["b"];		// 42
 ```
 
-**Note:** For more information on JavaScript `object`s, see the *this & Object Prototypes* title of this series, specifically Chapter 3.
+**Nota:** Para obtener más información sobre los `object` de JavaScript, consulte el título *this & Object Prototypes* de esta serie, específicamente el Capítulo 3.
 
-There are a couple of other value types that you will commonly interact with in JavaScript programs: *array* and *function*. But rather than being proper built-in types, these should be thought of more like subtypes -- specialized versions of the `object` type.
+Hay un par de otros tipos de valores con los que comúnmente interactuarás en los programas de JavaScript: *array* y *function*. Pero en lugar de ser tipos incorporados adecuados, debe pensarse que se parecen más a subtipos: versiones especializadas del tipo `object`.
 
 #### Arrays
 
-An array is an `object` that holds values (of any type) not particularly in named properties/keys, but rather in numerically indexed positions. For example:
+Un array es un `object` que contiene valores (de cualquier tipo) no particularmente en properties/keys, sino en posiciones indexadas numéricamente. Por ejemplo:
 
 ```js
 var arr = [
@@ -152,21 +152,21 @@ arr.length;		// 3
 typeof arr;		// "object"
 ```
 
-**Note:** Languages that start counting at zero, like JS does, use `0` as the index of the first element in the array.
+**Nota:** Los lenguajes que comienzan a contar desde cero, como JS, usan `0` como el índice del primer elemento en el array.
 
-It may be helpful to think of `arr` visually:
+Puede ser útil pensar en `arr` visualmente:
 
 <img src="fig5.png">
 
-Because arrays are special objects (as `typeof` implies), they can also have properties, including the automatically updated `length` property.
+Como los arrays son objetos especiales (como implica `typeof`), también pueden tener propiedades, por ejemplo la propiedad` length` que se actualiza automáticamente.
 
-You theoretically could use an array as a normal object with your own named properties, or you could use an `object` but only give it numeric properties (`0`, `1`, etc.) similar to an array. However, this would generally be considered improper usage of the respective types.
+Teóricamente, podría usar un array como un objeto normal con sus propias propiedades nombradas, o podría usar un `object` pero solo asignarle propiedades numéricas (`0`, `1`, etc.) similares a un array. Sin embargo, esto generalmente se consideraría un uso inadecuado de los tipos respectivos.
 
-The best and most natural approach is to use arrays for numerically positioned values and use `object`s for named properties.
+El mejor y más natural enfoque es usar arrays para valores posicionados numéricamente y usar `object` para propiedades nombradas.
 
 #### Functions
 
-The other `object` subtype you'll use all over your JS programs is a function:
+El otro subtipo `object` que usarás en todos tus programas JS es una función:
 
 ```js
 function foo() {
@@ -180,15 +180,15 @@ typeof foo();		// "number"
 typeof foo.bar;		// "string"
 ```
 
-Again, functions are a subtype of `objects` -- `typeof` returns `"function"`, which implies that a `function` is a main type -- and can thus have properties, but you typically will only use function object properties (like `foo.bar`) in limited cases.
+Nuevamente, las funciones son un subtipo de `objects` -- `typeof` devuelve `"function"`, lo que implica que una `function` es un tipo principal -- y, por lo tanto, puede tener propiedades, pero normalmente solo usará propiedades de objeto de función (como `foo.bar`) en casos limitados.
 
-**Note:** For more information on JS values and their types, see the first two chapters of the *Types & Grammar* title of this series.
+**Nota:** Para obtener más información sobre los valores de JS y sus tipos, consulte los dos primeros capítulos del título *Types & Grammar* de esta serie.
 
 ### Built-In Type Methods
 
-The built-in types and subtypes we've just discussed have behaviors exposed as properties and methods that are quite powerful and useful.
+Los tipos y subtipos integrados que acabamos de discutir tienen comportamientos expuestos como propiedades y métodos que son bastante poderosos y útiles.
 
-For example:
+Por ejemplo:
 
 ```js
 var a = "hello world";
@@ -199,19 +199,19 @@ a.toUpperCase();		// "HELLO WORLD"
 b.toFixed(4);			// "3.1416"
 ```
 
-The "how" behind being able to call `a.toUpperCase()` is more complicated than just that method existing on the value.
+El "cómo" detrás de poder llamar a `a.toUpperCase()` es más complicado que solo el método existente en el valor.
 
-Briefly, there is a `String` (capital `S`) object wrapper form, typically called a "native," that pairs with the primitive `string` type; it's this object wrapper that defines the `toUpperCase()` method on its prototype.
+Brevemente, hay una forma de envoltura de objeto `String` (mayúscula `S`), típicamente llamada "native", que se empareja con el tipo primitivo `string`; es este contenedor de objetos el que define el método `toUpperCase()` en su prototype.
 
-When you use a primitive value like `"hello world"` as an `object` by referencing a property or method (e.g., `a.toUpperCase()` in the previous snippet), JS automatically "boxes" the value to its object wrapper counterpart (hidden under the covers).
+Cuando usa un valor primitivo como `"hello world"` como un `object` haciendo referencia a una propiedad o método (por ejemplo, `a.toUpperCase()` en el fragmento anterior), JS automáticamente "ajusta" el valor a su objeto contraparte de la envoltura (oculta bajo las cubiertas).
 
-A `string` value can be wrapped by a `String` object, a `number` can be wrapped by a `Number` object, and a `boolean` can be wrapped by a `Boolean` object. For the most part, you don't need to worry about or directly use these object wrapper forms of the values -- prefer the primitive value forms in practically all cases and JavaScript will take care of the rest for you.
+Un valor `string` puede ser wrapped por un objeto `String`, un `number` puede ser envuelto por un objeto` Number`, y un `boolean` puede ser envuelto por un objeto `Boolean`. En su mayor parte, no necesita preocuparse o usar directamente estas formas de envoltura de objetos de los valores; prefiera las formas de valores primitivos en prácticamente todos los casos y JavaScript se encargará del resto por usted.
 
-**Note:** For more information on JS natives and "boxing," see Chapter 3 of the *Types & Grammar* title of this series. To better understand the prototype of an object, see Chapter 5 of the *this & Object Prototypes* title of this series.
+**Nota:** Para obtener más información sobre los JS natives y "boxing,", consulte el Capítulo 3 del título *Types & Grammar* de esta serie. Para comprender mejor el prototype de un objeto, consulte el Capítulo 5 del título *this & Object Prototypes* de esta serie.
 
 ### Comparing Values
 
-There are two main types of value comparison that you will need to make in your JS programs: *equality* and *inequality*. The result of any comparison is a strictly `boolean` value (`true` or `false`), regardless of what value types are compared.
+Hay dos tipos de comparaciones de valores principales que deberá realizar en sus programas JS: *equality* y *inequality*. El resultado de cualquier comparación es un valor estrictamente `booleano` (`true` o `false`), independientemente de qué tipos de valor se comparan.
 
 #### Coercion
 

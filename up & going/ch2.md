@@ -215,15 +215,15 @@ Hay dos tipos de comparaciones de valores principales que deberá realizar en su
 
 #### Coercion
 
-We talked briefly about coercion in Chapter 1, but let's revisit it here.
+Hablamos brevemente sobre la coerción en el Capítulo 1, pero revisémoslo aquí.
 
-Coercion comes in two forms in JavaScript: *explicit* and *implicit*. Explicit coercion is simply that you can see obviously from the code that a conversion from one type to another will occur, whereas implicit coercion is when the type conversion can happen as more of a non-obvious side effect of some other operation.
+Coercion viene en dos formas en JavaScript: *explicit* y *implicit*. La coerción explícita es simplemente la que puede ver en el código, que se producirá una conversión de un tipo a otro, mientras que la coerción implícita es cuando la conversión de tipo puede ocurrir como un efecto secundario no obvio de alguna otra operación.
 
-You've probably heard sentiments like "coercion is evil" drawn from the fact that there are clearly places where coercion can produce some surprising results. Perhaps nothing evokes frustration from developers more than when the language surprises them.
+Probablemente haya escuchado sentimientos como "la coerción es malvada" debido al hecho de que hay claramente lugares donde la coercion puede producir algunos resultados sorprendentes. Quizás nada evoca la frustración de los desarrolladores más que cuando el lenguaje los sorprende.
 
-Coercion is not evil, nor does it have to be surprising. In fact, the majority of cases you can construct with type coercion are quite sensible and understandable, and can even be used to *improve* the readability of your code. But we won't go much further into that debate -- Chapter 4 of the *Types & Grammar* title of this series covers all sides.
+La coerción no es mala, ni tiene que ser sorprendente. De hecho, la mayoría de los casos que puede construir con coerción de tipo son bastante razonables y comprensibles, e incluso pueden utilizarse para *mejorar* la legibilidad de su código. Pero no profundizaremos en ese debate: el capítulo 4 del título *Types & Grammar* de esta serie abarca todos los lados.
 
-Here's an example of *explicit* coercion:
+Aquí hay un ejemplo de *explicit* coercion:
 
 ```js
 var a = "42";
@@ -234,7 +234,7 @@ a;				// "42"
 b;				// 42 -- the number!
 ```
 
-And here's an example of *implicit* coercion:
+Y aquí hay un ejemplo de *implicit* coercion:
 
 ```js
 var a = "42";
@@ -247,16 +247,16 @@ b;				// 42 -- the number!
 
 #### Truthy & Falsy
 
-In Chapter 1, we briefly mentioned the "truthy" and "falsy" nature of values: when a non-`boolean` value is coerced to a `boolean`, does it become `true` or `false`, respectively?
+En el Capítulo 1, mencionamos brevemente la naturaleza de los valores "truthy" y "falsy" : cuando un valor no `boolean` se convierte en un `boolean`, ¿se convierte en `true` o `false`, respectivamente?
 
-The specific list of "falsy" values in JavaScript is as follows:
+La lista específica de valores "falsy" en JavaScript es la siguiente:
 
 * `""` (empty string)
 * `0`, `-0`, `NaN` (invalid `number`)
 * `null`, `undefined`
 * `false`
 
-Any value that's not on this "falsy" list is "truthy." Here are some examples of those:
+Cualquier valor que no esté en esta lista "falsy" es "truthy". Aquí hay algunos ejemplos:
 
 * `"hello"`
 * `42`
@@ -265,15 +265,15 @@ Any value that's not on this "falsy" list is "truthy." Here are some examples of
 * `{ }`, `{ a: 42 }` (objects)
 * `function foo() { .. }` (functions)
 
-It's important to remember that a non-`boolean` value only follows this "truthy"/"falsy" coercion if it's actually coerced to a `boolean`. It's not all that difficult to confuse yourself with a situation that seems like it's coercing a value to a `boolean` when it's not.
+Es importante recordar que un valor non-`boolean` solo sigue esta "truthy"/"falsy" coercion si en realidad está obligada a un `boolean`. No es tan difícil confundirse con una situación que parece estar forzando un valor para un `boolean` cuando no lo es.
 
 #### Equality
 
-There are four equality operators: `==`, `===`, `!=`, and `!==`. The `!` forms are of course the symmetric "not equal" versions of their counterparts; *non-equality* should not be confused with *inequality*.
+Hay cuatro operadores de igualdad: `==`, `===`, `!=` y `!==`. Las formas `!` son las versiones simétricas "not equal" de sus contrapartes; *non-equality* no debe confundirse con *inequality (desigualdad)*.
 
-The difference between `==` and `===` is usually characterized that `==` checks for value equality and `===` checks for both value and type equality. However, this is inaccurate. The proper way to characterize them is that `==` checks for value equality with coercion allowed, and `===` checks for value equality without allowing coercion; `===` is often called "strict equality" for this reason.
+La diferencia entre `==` y `===` generalmente se caracteriza porque `==` verifica la igualdad de valores y `===` verifica la igualdad de valores y tipos. Sin embargo, esto es inexacto. La forma correcta de caracterizarlos es que `==` verifica la igualdad de valores con la coerción permitida, y `===` verifica la igualdad de valores sin permitir la coerción; `===` a menudo se llama "strict equality" por esta razón.
 
-Consider the implicit coercion that's allowed by the `==` loose-equality comparison and not allowed with the `===` strict-equality:
+Considere la coerción implícita que está permitida por la comparación loose-equality `==` y no está permitida con la  `===` strict-equality:
 
 ```js
 var a = "42";
@@ -283,29 +283,29 @@ a == b;			// true
 a === b;		// false
 ```
 
-In the `a == b` comparison, JS notices that the types do not match, so it goes through an ordered series of steps to coerce one or both values to a different type until the types match, where then a simple value equality can be checked.
+En la comparación `a == b`, JS se da cuenta de que los tipos no coinciden, por lo que pasa por una serie ordenada de pasos para forzar uno o ambos valores a un tipo diferente hasta que los tipos coincidan, donde entonces puede existir una simple igualdad de valores. 
 
-If you think about it, there's two possible ways `a == b` could give `true` via coercion. Either the comparison could end up as `42 == 42` or it could be `"42" == "42"`. So which is it?
+Si lo piensas bien, hay dos formas posibles por las que `a == b` podría dar `true` a través de la coacción. O la comparación podría terminar como `42 == 42` o podría ser` "42" == "42" `. Entonces, ¿cuál es?
 
-The answer: `"42"` becomes `42`, to make the comparison `42 == 42`. In such a simple example, it doesn't really seem to matter which way that process goes, as the end result is the same. There are more complex cases where it matters not just what the end result of the comparison is, but *how* you get there.
+La respuesta: `"42"` se convierte en `42`, para hacer la comparación `42 == 42`. En un ejemplo tan simple, realmente no parece importar en qué sentido se va ese proceso, ya que el resultado final es el mismo. Hay casos más complejos en los que no solo importa cuál es el resultado final de la comparación, sino también cómo se obtiene.
 
-The `a === b` produces `false`, because the coercion is not allowed, so the simple value comparison obviously fails. Many developers feel that `===` is more predictable, so they advocate always using that form and staying away from `==`. I think this view is very shortsighted. I believe `==` is a powerful tool that helps your program, *if you take the time to learn how it works.*
+El `a === b` produce `false`, porque la coacción no está permitida, por lo que la simple comparación de valores falla obviamente. Muchos desarrolladores creen que `===` es más predecible, por lo que abogan por usar siempre esa forma y mantenerse alejados de `==`. Creo que esta vista es muy miope. Creo que `==` es una herramienta poderosa que ayuda a tu programa, *si te tomas el tiempo para aprender cómo funciona*.
 
-We're not going to cover all the nitty-gritty details of how the coercion in `==` comparisons works here. Much of it is pretty sensible, but there are some important corner cases to be careful of. You can read section 11.9.3 of the ES5 specification (http://www.ecma-international.org/ecma-262/5.1/) to see the exact rules, and you'll be surprised at just how straightforward this mechanism is, compared to all the negative hype surrounding it.
+No vamos a cubrir todos los detalles esenciales de cómo funciona la coacción en las comparaciones `==` aquí. Gran parte de esto es bastante sensato, pero hay algunos casos importantes en las esquinas a tener en cuenta. Puede leer la sección 11.9.3 de la especificación ES5 (http://www.ecma-international.org/ecma-262/5.1/) para ver las reglas exactas, y se sorprenderá de lo sencillo que es este mecanismo, en comparación con todas las exageraciones negativas que lo rodean.
 
-To boil down a whole lot of details to a few simple takeaways, and help you know whether to use `==` or `===` in various situations, here are my simple rules:
+Para resumir una gran cantidad de detalles a unos pocos comentarios simples y ayudarlo a saber si debe usar `==` o `===` en varias situaciones, estas son mis reglas simples:
 
-* If either value (aka side) in a comparison could be the `true` or `false` value, avoid `==` and use `===`.
-* If either value in a comparison could be one of these specific values (`0`, `""`, or `[]` -- empty array), avoid `==` and use `===`.
-* In *all* other cases, you're safe to use `==`. Not only is it safe, but in many cases it simplifies your code in a way that improves readability.
+* Si cualquiera de los valores (a cada lado) en una comparación podría ser un valor `true` o `false`, evite `==` y use `===`.
+* Si cualquiera de los valores en una comparación podría ser uno de estos valores específicos (`0`, `""`, o `[]`- array vacío), evite `==` y use `===`.
+* En *todos* otros casos, es seguro usar `==`. No solo es seguro, sino que en muchos casos simplifica su código de una manera que mejora la legibilidad.
 
-What these rules boil down to is requiring you to think critically about your code and about what kinds of values can come through variables that get compared for equality. If you can be certain about the values, and `==` is safe, use it! If you can't be certain about the values, use `===`. It's that simple.
+A lo que se reducen estas reglas, es necesario que piense críticamente sobre su código y sobre qué tipo de valores pueden venir a través de variables que se comparan para la igualdad. Si puede estar seguro de los valores y `==` es seguro, ¡úselo! Si no puede estar seguro de los valores, use `===`. Es así de simple.
 
-The `!=` non-equality form pairs with `==`, and the `!==` form pairs with `===`. All the rules and observations we just discussed hold symmetrically for these non-equality comparisons.
+Los pares `!=` non-equality con `==`, y `!==` con `===`. Todas las reglas y observaciones que acabamos de discutir son simétricas para estas comparaciones de no igualdad.
 
-You should take special note of the `==` and `===` comparison rules if you're comparing two non-primitive values, like `object`s (including `function` and `array`). Because those values are actually held by reference, both `==` and `===` comparisons will simply check whether the references match, not anything about the underlying values.
+Debes tener en cuenta especialmente las reglas de comparación `==` y `===` si estás comparando dos valores no primitivos, como `object`  (incluyendo `function` y `array`). Debido a que esos valores se manejan por referencia, las comparaciones `==` y `===` simplemente verificarán si las referencias coinciden, nada sobre los valores subyacentes.
 
-For example, `array`s are by default coerced to `string`s by simply joining all the values with commas (`,`) in between. You might think that two `array`s with the same contents would be `==` equal, but they're not:
+Por ejemplo, un `array` se coacciona por defecto a un `string` simplemente uniendo todos los valores con comas (`,`) entre ellos. Podrías pensar que dos `array` con el mismo contenido serían `==` iguales, pero no lo son:
 
 ```js
 var a = [1,2,3];
@@ -317,17 +317,17 @@ b == c;		// true
 a == b;		// false
 ```
 
-**Note:** For more information about the `==` equality comparison rules, see the ES5 specification (section 11.9.3) and also consult Chapter 4 of the *Types & Grammar* title of this series; see Chapter 2 for more information about values versus references.
+**Nota:** Para obtener más información sobre las reglas de comparación de igualdad `==`, consulte la especificación ES5 (sección 11.9.3) y consulte también el Capítulo 4 del título *Types & Grammar* de esta serie; Consulte el Capítulo 2 para obtener más información sobre los valores en comparación con las referencias.
 
 #### Inequality
 
-The `<`, `>`, `<=`, and `>=` operators are used for inequality, referred to in the specification as "relational comparison." Typically they will be used with ordinally comparable values like `number`s. It's easy to understand that `3 < 4`.
+Los operadores `<`, `>`, `<=` y `>=` se usan para la desigualdad, a la que se hace referencia en la especificación como "comparación relacional". Normalmente, se usarán con valores ordinariamente comparables como `number`. Es fácil de entender que `3 < 4`.
 
-But JavaScript `string` values can also be compared for inequality, using typical alphabetic rules (`"bar" < "foo"`).
+Pero los valores de `string` de JavaScript también se pueden comparar por la desigualdad, utilizando reglas alfabéticas típicas (`"bar" < "foo"`).
 
-What about coercion? Similar rules as `==` comparison (though not exactly identical!) apply to the inequality operators. Notably, there are no "strict inequality" operators that would disallow coercion the same way `===` "strict equality" does.
+¿Qué pasa con la coacción? Reglas similares a la comparación `==` (¡aunque no exactamente idénticas!) Se aplican a los operadores de desigualdad. En particular, no hay operadores de "strict equality" que rechacen la coacción de la misma manera que lo hace `===`.
 
-Consider:
+Considerar:
 
 ```js
 var a = 41;
@@ -338,9 +338,9 @@ a < b;		// true
 b < c;		// true
 ```
 
-What happens here? In section 11.8.5 of the ES5 specification, it says that if both values in the `<` comparison are `string`s, as it is with `b < c`, the comparison is made lexicographically (aka alphabetically like a dictionary). But if one or both is not a `string`, as it is with `a < b`, then both values are coerced to be `number`s, and a typical numeric comparison occurs.
+¿Qué pasa aquí? En la sección 11.8.5 de la especificación ES5, dice que si ambos valores en la comparación `<` son `string`, como ocurre con `b < c`, la comparación se realiza de forma lexicográfica (también conocida alfabéticamente como un diccionario). Pero si uno o ambos no son una `string`, como ocurre con `a < b`, ambos valores se convierten en `number` y se produce una comparación numérica típica.
 
-The biggest gotcha you may run into here with comparisons between potentially different value types -- remember, there are no "strict inequality" forms to use -- is when one of the values cannot be made into a valid number, such as:
+El mayor problema que puede encontrar aquí con comparaciones entre tipos de valores potencialmente diferentes (recuerde, no hay formas de "strict inequality" para usar) es cuando uno de los valores no se puede convertir en un número válido, como:
 
 ```js
 var a = 42;
@@ -351,33 +351,33 @@ a > b;		// false
 a == b;		// false
 ```
 
-Wait, how can all three of those comparisons be `false`? Because the `b` value is being coerced to the "invalid number value" `NaN` in the `<` and `>` comparisons, and the specification says that `NaN` is neither greater-than nor less-than any other value.
+Espera, ¿cómo pueden las tres comparaciones ser `false`? Debido a que el valor `b` se está coerced a un "invalid number value" `NaN` en las comparaciones `<` y `>`, y la especificación dice que `NaN` no es mayor ni menor que cualquier otro valor .
 
-The `==` comparison fails for a different reason. `a == b` could fail if it's interpreted either as `42 == NaN` or `"42" == "foo"` -- as we explained earlier, the former is the case.
+La comparación `==` falla por una razón diferente. `a == b` podría fallar si se interpreta como `42 == NaN` o `"42"=="foo"` - como explicamos anteriormente, el primero es el caso.
 
-**Note:** For more information about the inequality comparison rules, see section 11.8.5 of the ES5 specification and also consult Chapter 4 of the *Types & Grammar* title of this series.
+**Nota:** Para obtener más información sobre las reglas de comparación de desigualdad, consulte la sección 11.8.5 de la especificación ES5 y también consulte el Capítulo 4 del título *Types & Grammar* de esta serie.
 
 ## Variables
 
-In JavaScript, variable names (including function names) must be valid *identifiers*. The strict and complete rules for valid characters in identifiers are a little complex when you consider nontraditional characters such as Unicode. If you only consider typical ASCII alphanumeric characters though, the rules are simple.
+En JavaScript, los nombres de variables (incluidos los nombres de funciones) deben ser *identifiers* válidos. Las reglas estrictas y completas para los caracteres válidos en los identificadores son un poco complejas cuando se consideran caracteres no tradicionales, como Unicode. Sin embargo, si solo considera los caracteres alfanuméricos ASCII típicos, las reglas son simples.
 
-An identifier must start with `a`-`z`, `A`-`Z`, `$`, or `_`. It can then contain any of those characters plus the numerals `0`-`9`.
+Un identificador debe comenzar con `a`-`z`, `A`-`Z`, `$`, or `_`. Entonces puede contener cualquiera de esos caracteres más los números `0`-`9`.
 
-Generally, the same rules apply to a property name as to a variable identifier. However, certain words cannot be used as variables, but are OK as property names. These words are called "reserved words," and include the JS keywords (`for`, `in`, `if`, etc.) as well as `null`, `true`, and `false`.
+En general, las mismas reglas se aplican a un nombre de propiedad como a un identificador de variable. Sin embargo, ciertas palabras no se pueden usar como variables, pero están bien como nombres de propiedades. Estas palabras se denominan "reserved words" e incluyen las palabras clave JS (`for`, `in`, `if`, etc.), así como `null`, `true` y `false`.
 
-**Note:** For more information about reserved words, see Appendix A of the *Types & Grammar* title of this series.
+**Nota:** Para obtener más información sobre las palabras reservadas, consulte el Apéndice A del título *Types & Grammar* de esta serie.
 
 ### Function Scopes
 
-You use the `var` keyword to declare a variable that will belong to the current function scope, or the global scope if at the top level outside of any function.
+Utiliza la palabra clave `var` para declarar una variable que pertenecerá al alcance de la función actual, o el alcance global si está en el nivel superior fuera de cualquier función.
 
 #### Hoisting
 
-Wherever a `var` appears inside a scope, that declaration is taken to belong to the entire scope and accessible everywhere throughout.
+Donde quiera que aparezca un `var` dentro de un alcance, se considera que esa declaración pertenece a todo el alcance y se puede acceder a ella en todas partes.
 
-Metaphorically, this behavior is called *hoisting*, when a `var` declaration is conceptually "moved" to the top of its enclosing scope. Technically, this process is more accurately explained by how code is compiled, but we can skip over those details for now.
+Metafóricamente, este comportamiento se denomina *hoisting (levantamiento/izar)*, cuando una declaración `var` se "mueve" conceptualmente a la parte superior de su ámbito de inclusión. Técnicamente, este proceso se explica con mayor precisión por la forma en que se compila el código, pero por ahora podemos omitir esos detalles.
 
-Consider:
+Considerar:
 
 ```js
 var a = 2;
@@ -397,11 +397,11 @@ function foo() {
 console.log( a );	// 2
 ```
 
-**Warning:** It's not common or a good idea to rely on variable *hoisting* to use a variable earlier in its scope than its `var` declaration appears; it can be quite confusing. It's much more common and accepted to use *hoisted* function declarations, as we do with the `foo()` call appearing before its formal declaration.
+**Advertencia:** No es común o una buena idea confiar en la variable *hoisting (izar)* para usar una variable en su alcance antes de que aparece su declaración `var`; puede ser bastante confuso. Es mucho más común y aceptado el uso de *hoisted* en declaraciones de función, como hacemos con la llamada `foo()` que aparece antes de su declaración formal.
 
 #### Nested Scopes
 
-When you declare a variable, it is available anywhere in that scope, as well as any lower/inner scopes. For example:
+Cuando declara una variable, está disponible en cualquier parte de ese ámbito, así como en cualquier ámbito inferior/interior. Por ejemplo:
 
 ```js
 function foo() {
@@ -427,9 +427,9 @@ function foo() {
 foo();
 ```
 
-Notice that `c` is not available inside of `bar()`, because it's declared only inside the inner `baz()` scope, and that `b` is not available to `foo()` for the same reason.
+Tenga en cuenta que `c` no está disponible dentro de `bar()`, porque se declara solo dentro del alcance interno `baz()`, y que `b` no está disponible para `foo()` por la misma razón.
 
-If you try to access a variable's value in a scope where it's not available, you'll get a `ReferenceError` thrown. If you try to set a variable that hasn't been declared, you'll either end up creating a variable in the top-level global scope (bad!) or getting an error, depending on "strict mode" (see "Strict Mode"). Let's take a look:
+Si intentas acceder al valor de una variable en un ámbito donde no está disponible, obtendrás un `ReferenceError` thrown. Si intenta establecer una variable que no se ha declarado, terminará creando una variable en el ámbito global de nivel superior (¡malo!) o recibirá un error, según el "strict mode" (consulte "Strict Mode"). Vamos a ver:
 
 ```js
 function foo() {
@@ -440,9 +440,9 @@ foo();
 a;			// 1 -- oops, auto global variable :(
 ```
 
-This is a very bad practice. Don't do it! Always formally declare your variables.
+Esta es una muy mala práctica. No lo hagas Siempre declare formalmente sus variables.
 
-In addition to creating declarations for variables at the function level, ES6 *lets* you declare variables to belong to individual blocks (pairs of `{ .. }`), using the `let` keyword. Besides some nuanced details, the scoping rules will behave roughly the same as we just saw with functions:
+Además de crear declaraciones para variables a nivel de función, ES6 *le permite* declarar que las variables pertenecen a bloques individuales (pares de `{ .. }`), usando la palabra clave `let`. Además de algunos detalles matizados, las reglas de alcance se comportarán aproximadamente de la misma forma que vimos con las funciones:
 
 ```js
 function foo() {
@@ -464,15 +464,15 @@ foo();
 // 5 7 9
 ```
 
-Because of using `let` instead of `var`, `b` will belong only to the `if` statement and thus not to the whole `foo()` function's scope. Similarly, `c` belongs only to the `while` loop. Block scoping is very useful for managing your variable scopes in a more fine-grained fashion, which can make your code much easier to maintain over time.
+Debido a que se usa `let` en lugar de `var`, `b` pertenecerá solo a la declaración `if` y, por lo tanto, no al alcance completo de la función `foo()`. De manera similar, `c` pertenece solo al bucle `while`. El ámbito del bloque es muy útil para administrar sus ámbitos variables de una manera más precisa, lo que puede hacer que su código sea mucho más fácil de mantener con el tiempo.
 
-**Note:** For more information about scope, see the *Scope & Closures* title of this series. See the *ES6 & Beyond* title of this series for more information about `let` block scoping.
+**Nota:** Para obtener más información sobre el alcance, consulte el título *Scope & Closures* de esta serie. Consulte el título *ES6 & Beyond* de esta serie para obtener más información sobre el alcance del bloque `let`.
 
 ## Conditionals
 
-In addition to the `if` statement we introduced briefly in Chapter 1, JavaScript provides a few other conditionals mechanisms that we should take a look at.
+Además de la sentencia `if` que presentamos brevemente en el Capítulo 1, JavaScript proporciona algunos otros mecanismos condicionales que debemos analizar.
 
-Sometimes you may find yourself writing a series of `if..else..if` statements like this:
+A veces, puede que te encuentres escribiendo una serie de afirmaciones `if..else..if` como esta:
 
 ```js
 if (a == 2) {
@@ -489,7 +489,7 @@ else {
 }
 ```
 
-This structure works, but it's a little verbose because you need to specify the `a` test for each case. Here's another option, the `switch` statement:
+Esta estructura funciona, pero es un poco detallada porque debe especificar la prueba `a` para cada caso. Aquí hay otra opción, la sentencia `switch`:
 
 ```js
 switch (a) {
@@ -507,7 +507,7 @@ switch (a) {
 }
 ```
 
-The `break` is important if you want only the statement(s) in one `case` to run. If you omit `break` from a `case`, and that `case` matches or runs, execution will continue with the next `case`'s statements regardless of that `case` matching. This so called "fall through" is sometimes useful/desired:
+El `break` es importante si desea que solo se ejecuten las declaraciones en un `case`. Si omite `break` de un `case`, y ese `case` coincide o se ejecuta, la ejecución continuará con las siguientes afirmaciones de `case` independientemente de la coincidencia de `case`. Esto se llama "fall through (caída a través)" es a veces útil/deseado:
 
 ```js
 switch (a) {
@@ -523,9 +523,9 @@ switch (a) {
 }
 ```
 
-Here, if `a` is either `2` or `10`, it will execute the "some cool stuff" code statements.
+Aquí, si `a` es `2` o `10`, ejecutará las declaraciones de código de "some cool stuff".
 
-Another form of conditional in JavaScript is the "conditional operator," often called the "ternary operator." It's like a more concise form of a single `if..else` statement, such as:
+Otra forma de condicional en JavaScript es el "conditional operator", a menudo llamado "ternary operator". Es como una forma más concisa de una sola declaración `if..else`, como:
 
 ```js
 var a = 42;
@@ -542,17 +542,17 @@ var b = (a > 41) ? "hello" : "world";
 // }
 ```
 
-If the test expression (`a > 41` here) evaluates as `true`, the first clause (`"hello"`) results, otherwise the second clause (`"world"`) results, and whatever the result is then gets assigned to `b`.
+Si la expresión de prueba (`a > 41` aquí) se evalúa como `true`, se genera la primera cláusula (`"hello"`), de lo contrario se genera la segunda cláusula (`"world"`), y cualquiera que sea el resultado, se asigna a `b`.
 
-The conditional operator doesn't have to be used in an assignment, but that's definitely the most common usage.
+El operador condicional no tiene que ser usado en una asignación, pero ese es definitivamente el uso más común.
 
-**Note:** For more information about testing conditions and other patterns for `switch` and `? :`, see the *Types & Grammar* title of this series.
+**Nota:** Para obtener más información sobre las condiciones de prueba y otros patrones para `switch` y `? :`, vea el título *Types & Grammar* de esta serie.
 
 ## Strict Mode
 
-ES5 added a "strict mode" to the language, which tightens the rules for certain behaviors. Generally, these restrictions are seen as keeping the code to a safer and more appropriate set of guidelines. Also, adhering to strict mode makes your code generally more optimizable by the engine. Strict mode is a big win for code, and you should use it for all your programs.
+ES5 agregó un "strict mode" al lenguaje, que refuerza las reglas para ciertos comportamientos. En general, se considera que estas restricciones mantienen el código en un conjunto de pautas más seguro y apropiado. Además, seguir el modo estricto hace que su código sea generalmente más optimizable por el motor. El modo estricto es una gran ganancia para el código, y debe usarlo para todos sus programas.
 
-You can opt in to strict mode for an individual function, or an entire file, depending on where you put the strict mode pragma:
+Puede optar por el modo estricto para una función individual o un archivo completo, dependiendo de dónde coloque el modo estricto:
 
 ```js
 function foo() {
@@ -568,7 +568,7 @@ function foo() {
 // this code is not strict mode
 ```
 
-Compare that to:
+Compara eso con:
 
 ```js
 "use strict";
@@ -584,7 +584,7 @@ function foo() {
 // this code is strict mode
 ```
 
-One key difference (improvement!) with strict mode is disallowing the implicit auto-global variable declaration from omitting the `var`:
+Una diferencia clave (¡mejora!) con el modo estricto es no permitir que la declaración implícita de la variable auto-global omita el `var`:
 
 ```js
 function foo() {
@@ -595,15 +595,15 @@ function foo() {
 foo();
 ```
 
-If you turn on strict mode in your code, and you get errors, or code starts behaving buggy, your temptation might be to avoid strict mode. But that instinct would be a bad idea to indulge. If strict mode causes issues in your program, almost certainly it's a sign that you have things in your program you should fix.
+Si activa el modo estricto en su código y recibe errores, o el código comienza a comportarse con errores, su tentación podría ser evitar el modo estricto. Pero ese instinto sería una mala idea para disfrutar. Si el modo estricto causa problemas en su programa, es casi seguro que es una señal de que tiene cosas en su programa que debe corregir.
 
-Not only will strict mode keep your code to a safer path, and not only will it make your code more optimizable, but it also represents the future direction of the language. It'd be easier on you to get used to strict mode now than to keep putting it off -- it'll only get harder to convert later!
+El modo estricto no solo mantendrá su código en una ruta más segura, y no solo hará que su código sea más optimizable, sino que también representa la dirección futura del idioma. Sería más fácil acostumbrarse al modo estricto ahora que seguir postergándolo; ¡solo será más difícil convertirlo más tarde!
 
-**Note:** For more information about strict mode, see the Chapter 5 of the *Types & Grammar* title of this series.
+**Nota:** Para obtener más información sobre el modo estricto, consulte el Capítulo 5 del título *Types & Grammar* de esta serie.
 
 ## Functions As Values
 
-So far, we've discussed functions as the primary mechanism of *scope* in JavaScript. You recall typical `function` declaration syntax as follows:
+Hasta ahora, hemos analizado las funciones como el mecanismo principal de *scope* en JavaScript. Recuerda la sintaxis típica de la declaración de la función de la siguiente manera:
 
 ```js
 function foo() {
@@ -611,13 +611,13 @@ function foo() {
 }
 ```
 
-Though it may not seem obvious from that syntax, `foo` is basically just a variable in the outer enclosing scope that's given a reference to the `function` being declared. That is, the `function` itself is a value, just like `42` or `[1,2,3]` would be.
+Aunque puede no parecer obvio a partir de esa sintaxis, `foo` es básicamente una variable en el ámbito de envolvente externo a la que se le da una referencia a la función que se está declarando. Es decir, la `function` en sí misma es un valor, como lo sería `42` o `[1,2,3]`.
 
-This may sound like a strange concept at first, so take a moment to ponder it. Not only can you pass a value (argument) *to* a function, but *a function itself can be a value* that's assigned to variables, or passed to or returned from other functions.
+Esto puede parecer un concepto extraño al principio, así que tómate un momento para reflexionar sobre ello. No solo puede pasar un valor (argumento) *a* una función, sino que *una función en sí misma puede ser un valor* que se asigna a las variables, o que se pasa o retorna de otras funciones.
 
-As such, a function value should be thought of as an expression, much like any other value or expression.
+Como tal, un valor de función debe considerarse como una expresión, al igual que cualquier otro valor o expresión.
 
-Consider:
+Considerar:
 
 ```js
 var foo = function() {
@@ -629,17 +629,17 @@ var x = function bar(){
 };
 ```
 
-The first function expression assigned to the `foo` variable is called *anonymous* because it has no `name`.
+La primera expresión de función asignada a la variable `foo` se llama *anonymous* porque no tiene `name`.
 
-The second function expression is *named* (`bar`), even as a reference to it is also assigned to the `x` variable. *Named function expressions* are generally more preferable, though *anonymous function expressions* are still extremely common.
+La segunda expresión de la función es *nombrada* (`bar`), incluso como referencia a ella también se asigna a la variable `x`. *Named function expressions* son generalmente más preferibles, aunque *anonymous function expressions* todavía son extremadamente comunes.
 
-For more information, see the *Scope & Closures* title of this series.
+Para obtener más información, consulte el título de *Scope & Closures* de esta serie.
 
 ### Immediately Invoked Function Expressions (IIFEs)
 
-In the previous snippet, neither of the function expressions are executed -- we could if we had included `foo()` or `x()`, for instance.
+En el fragmento anterior, ninguna de las expresiones de la función se ejecuta, podríamos si hubiéramos incluido `foo()` o `x()`, por ejemplo.
 
-There's another way to execute a function expression, which is typically referred to as an *immediately invoked function expression* (IIFE):
+Hay otra forma de ejecutar una expresión de función, que normalmente se denomina como una expresión de función *immediately invoked function expression* (IIFE):
 
 ```js
 (function IIFE(){
@@ -648,11 +648,11 @@ There's another way to execute a function expression, which is typically referre
 // "Hello!"
 ```
 
-The outer `( .. )` that surrounds the `(function IIFE(){ .. })` function expression is just a nuance of JS grammar needed to prevent it from being treated as a normal function declaration.
+El outer `( .. )` externo que rodea a la expresión de la función `(function IIFE(){ .. })` es solo un matiz de la gramática JS necesaria para evitar que sea tratada como una declaración de función normal.
 
-The final `()` on the end of the expression -- the `})();` line -- is what actually executes the function expression referenced immediately before it.
+El `()` al final de la expresión - la línea `})();` - es lo que realmente ejecuta la expresión de función a la que se hace referencia inmediatamente antes.
 
-That may seem strange, but it's not as foreign as first glance. Consider the similarities between `foo` and `IIFE` here:
+Eso puede parecer extraño, pero no es tan extraño como a primera vista. Considera las similitudes entre `foo` y` IIFE` aquí:
 
 ```js
 function foo() { .. }
@@ -666,9 +666,9 @@ foo();
 (function IIFE(){ .. })();
 ```
 
-As you can see, listing the `(function IIFE(){ .. })` before its executing `()` is essentially the same as including `foo` before its executing `()`; in both cases, the function reference is executed with `()` immediately after it.
+Como puede ver, listar `(function IIFE(){ .. })` antes de ejecutar `()` es esencialmente lo mismo que incluir `foo` antes de ejecutar `()`; en ambos casos, la referencia de la función se ejecuta con `()` inmediatamente después.
 
-Because an IIFE is just a function, and functions create variable *scope*, using an IIFE in this fashion is often used to declare variables that won't affect the surrounding code outside the IIFE:
+Debido a que un IIFE es solo una función, y las funciones crean una variable *scope*, el uso de un IIFE de esta manera a menudo se usa para declarar variables que no afectarán el código circundante fuera del IIFE:
 
 ```js
 var a = 42;
@@ -681,7 +681,7 @@ var a = 42;
 console.log( a );		// 42
 ```
 
-IIFEs can also have return values:
+Las IIFE también pueden tener valores de retorno:
 
 ```js
 var x = (function IIFE(){
@@ -692,6 +692,8 @@ x;	// 42
 ```
 
 The `42` value gets `return`ed from the `IIFE`-named function being executed, and is then assigned to `x`.
+
+El valor `42` que se obtiene gracias al `return` de la función `IIFE` que se ejecuta, y luego se asigna a `x`.
 
 ### Closure
 

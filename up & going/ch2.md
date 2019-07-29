@@ -697,11 +697,11 @@ El valor `42` que se obtiene gracias al `return` de la función `IIFE` que se ej
 
 ### Closure
 
-*Closure* is one of the most important, and often least understood, concepts in JavaScript. I won't cover it in deep detail here, and instead refer you to the *Scope & Closures* title of this series. But I want to say a few things about it so you understand the general concept. It will be one of the most important techniques in your JS skillset.
+*Closure* es uno de los conceptos más importantes y, a menudo, menos comprendidos en JavaScript. No lo cubriré en detalle aquí, y en cambio, lo referiré al título *Scope & Closures* de esta serie. Pero quiero decir algunas cosas al respecto para que entienda el concepto general. Será una de las técnicas más importantes en su skillset de JS.
 
-You can think of closure as a way to "remember" and continue to access a function's scope (its variables) even once the function has finished running.
+Puede pensar en el closure (cierre) como una forma de "recordar" y continuar accediendo al alcance de una función (sus variables) incluso una vez que la función haya terminado de ejecutarse.
 
-Consider:
+Considerar:
 
 ```js
 function makeAdder(x) {
@@ -717,7 +717,7 @@ function makeAdder(x) {
 }
 ```
 
-The reference to the inner `add(..)` function that gets returned with each call to the outer `makeAdder(..)` is able to remember whatever `x` value was passed in to `makeAdder(..)`. Now, let's use `makeAdder(..)`:
+La referencia a la función interna `add (..)` que se devuelve con cada llamada al `makeAdder(..)` externo es capaz de recordar cualquier valor de `x` que se haya pasado a `makeAdder(..)`. Ahora, usemos `makeAdder(..)`:
 
 ```js
 // `plusOne` gets a reference to the inner `add(..)`
@@ -736,22 +736,22 @@ plusOne( 41 );		// 42 <-- 1 + 41
 plusTen( 13 );		// 23 <-- 10 + 13
 ```
 
-More on how this code works:
+Más sobre cómo funciona este código:
 
-1. When we call `makeAdder(1)`, we get back a reference to its inner `add(..)` that remembers `x` as `1`. We call this function reference `plusOne(..)`.
-2. When we call `makeAdder(10)`, we get back another reference to its inner `add(..)` that remembers `x` as `10`. We call this function reference `plusTen(..)`.
-3. When we call `plusOne(3)`, it adds `3` (its inner `y`) to the `1` (remembered by `x`), and we get `4` as the result.
-4. When we call `plusTen(13)`, it adds `13` (its inner `y`) to the `10` (remembered by `x`), and we get `23` as the result.
+1. Cuando llamamos a `makeAdder(1)`, obtenemos una referencia a su `add(..)` que recuerda a `x` como `1`. Llamamos a esta referencia de función `plusOne(..)`.
+2. Cuando llamamos a `makeAdder(10)`, recuperamos otra referencia a su `add(..)` interno que recuerda `x` como `10`. Llamamos a esta referencia de función `plusTen(..)`.
+3. Cuando llamamos `plusOne(3)`, agrega `3` (su `y` interno) al `1` (recordado por `x`), y obtenemos el resultado como `4`.
+4. Cuando llamamos `plusTen(13)`, agrega `13` (su `y` interno) al `10` (recordado por `x`), y obtenemos el resultado como `23`.
 
-Don't worry if this seems strange and confusing at first -- it can be! It'll take lots of practice to understand it fully.
+No se preocupe si esto parece extraño y confuso al principio, ¡puede ser! Tomará mucha práctica entenderlo completamente.
 
-But trust me, once you do, it's one of the most powerful and useful techniques in all of programming. It's definitely worth the effort to let your brain simmer on closures for a bit. In the next section, we'll get a little more practice with closure.
+Pero confía en mí, una vez que lo hagas, es una de las técnicas más poderosas y útiles de toda la programación. Definitivamente vale la pena el esfuerzo de dejar que tu cerebro hierva a fuego lento por un momento. En la siguiente sección, tendremos un poco más de práctica con el closure.
 
 #### Modules
 
-The most common usage of closure in JavaScript is the module pattern. Modules let you define private implementation details (variables, functions) that are hidden from the outside world, as well as a public API that *is* accessible from the outside.
+El uso más común del closure en JavaScript es el patrón del módulo. Los módulos le permiten definir detalles privados de implementación (variables, funciones) que están ocultos del mundo exterior, así como una API pública que *es* accesible desde el exterior.
 
-Consider:
+Considerar:
 
 ```js
 function User(){
@@ -777,35 +777,35 @@ var fred = User();
 fred.login( "fred", "12Battery34!" );
 ```
 
-The `User()` function serves as an outer scope that holds the variables `username` and `password`, as well as the inner `doLogin()` function; these are all private inner details of this `User` module that cannot be accessed from the outside world.
+La función `User()` sirve como un outer scope (ámbito externo) que contiene las variables `username` y` password`, así como la función interna `doLogin()`; Estos son todos los detalles internos privados de este módulo `User` al que no se puede acceder desde el mundo exterior.
 
-**Warning:** We are not calling `new User()` here, on purpose, despite the fact that probably seems more common to most readers. `User()` is just a function, not a class to be instantiated, so it's just called normally. Using `new` would be inappropriate and actually waste resources.
+**Advertencia:** No estamos llamando a `new User()` aquí, a propósito, a pesar del hecho de que probablemente sea más común para la mayoría de los lectores. `User()` es solo una función, no una clase para ser instanciada, así que simplemente se llama normalmente. Usar `new` sería inapropiado y en realidad desperdiciaría recursos.
 
-Executing `User()` creates an *instance* of the `User` module -- a whole new scope is created, and thus a whole new copy of each of these inner variables/functions. We assign this instance to `fred`. If we run `User()` again, we'd get a new instance entirely separate from `fred`.
+Al ejecutar `User()` se crea una *instancia* del módulo `User` -- se crea un ámbito completamente nuevo y, por lo tanto, se crea una copia completamente nueva de cada una de estas variables/funciones internas. Asignamos esta instancia a `fred`. Si ejecutamos `User()` nuevamente, obtendríamos una nueva instancia completamente separada de `fred`.
 
-The inner `doLogin()` function has a closure over `username` and `password`, meaning it will retain its access to them even after the `User()` function finishes running.
+La función interna `doLogin()` tiene un closure sobre `username` y` password`, lo que significa que mantendrá su acceso a ellos incluso después de que la función `User()` termine de ejecutarse.
 
-`publicAPI` is an object with one property/method on it, `login`, which is a reference to the inner `doLogin()` function. When we return `publicAPI` from `User()`, it becomes the instance we call `fred`.
+`publicAPI` es un objeto con una propiedad/método en él, `login`, que es una referencia a la función interna `doLogin()`. Cuando devolvemos `publicAPI` desde `User()`, se convierte en la instancia que llamamos `fred`.
 
-At this point, the outer `User()` function has finished executing. Normally, you'd think the inner variables like `username` and `password` have gone away. But here they have not, because there's a closure in the `login()` function keeping them alive.
+En este punto, la función externa `User()` ha terminado de ejecutarse. Normalmente, usted pensaría que las variables internas como `username` y` password` han desaparecido. Pero aquí no lo han hecho, porque hay un closure en la función `login()` que los mantiene con vida.
 
-That's why we can call `fred.login(..)` -- the same as calling the inner `doLogin(..)` -- and it can still access `username` and `password` inner variables.
+Es por eso que podemos llamar a `fred.login(..)` -- lo mismo que llamar al `doLogin(..)` interno -- y todavía puede acceder a las variables internas `username` y` password`.
 
-There's a good chance that with just this brief glimpse at closure and the module pattern, some of it is still a bit confusing. That's OK! It takes some work to wrap your brain around it.
+Hay una buena posibilidad de que solo con este breve vistazo al closure y el module pattern, todavía sea un poco confuso. ¡Está bien! Se necesita algo de trabajo para envolver su cerebro a su alrededor.
 
-From here, go read the *Scope & Closures* title of this series for a much more in-depth exploration.
+Desde aquí, lea el título *Scope & Closures* de esta serie para una exploración mucho más profunda.
 
 ## `this` Identifier
 
-Another very commonly misunderstood concept in JavaScript is the `this` identifier. Again, there's a couple of chapters on it in the *this & Object Prototypes* title of this series, so here we'll just briefly introduce the concept.
+Otro concepto muy mal entendido en JavaScript es el identificador `this`. Una vez más, hay un par de capítulos en el título *this & Object Prototypes* de esta serie, por lo que aquí presentaremos brevemente el concepto.
 
-While it may often seem that `this` is related to "object-oriented patterns," in JS `this` is a different mechanism.
+Si bien a menudo puede parecer que `this` está relacionado con "patrones orientados a objetos", en JS `this` es un mecanismo diferente.
 
-If a function has a `this` reference inside it, that `this` reference usually points to an `object`. But which `object` it points to depends on how the function was called.
+Si una función tiene una referencia `this` dentro de ella, esa referencia usualmente apunta a un `object`. Pero a qué `object` apunta depende de cómo se llamó la función.
 
-It's important to realize that `this` *does not* refer to the function itself, as is the most common misconception.
+Es importante darse cuenta de que `this` *no* se refiere a la función en sí, ya que es el error más común.
 
-Here's a quick illustration:
+Aquí hay una rápida ilustración:
 
 ```js
 function foo() {
@@ -831,26 +831,26 @@ foo.call( obj2 );		// "obj2"
 new foo();			// undefined
 ```
 
-There are four rules for how `this` gets set, and they're shown in those last four lines of that snippet.
+Hay cuatro reglas sobre cómo se establece `this`, y se muestran en esas últimas cuatro líneas de ese fragmento.
 
-1. `foo()` ends up setting `this` to the global object in non-strict mode -- in strict mode, `this` would be `undefined` and you'd get an error in accessing the `bar` property -- so `"global"` is the value found for `this.bar`.
-2. `obj1.foo()` sets `this` to the `obj1` object.
-3. `foo.call(obj2)` sets `this` to the `obj2` object.
-4. `new foo()` sets `this` to a brand new empty object.
+1. `foo()` termina configurando `this` en el objeto global en modo no estricto - en modo estricto,` this` sería `undefined` y obtendrías un error al acceder a la propiedad `bar` - por lo que `"global"` es el valor encontrado para `this.bar`.
+2. `obj1.foo()` establece `this` en el objeto `obj1`.
+3. `foo.call(obj2)` establece `this` en el objeto `obj2`.
+4. `new foo()` establece `this` en un nuevo objeto vacío.
 
-Bottom line: to understand what `this` points to, you have to examine how the function in question was called. It will be one of those four ways just shown, and that will then answer what `this` is.
+Conclusión: para entender a qué apunta `this`, debe examinar cómo se llamó a la función en cuestión. Será una de esas cuatro formas que acabamos de mostrar, y luego responderá qué es `this`.
 
-**Note:** For more information about `this`, see Chapters 1 and 2 of the *this & Object Prototypes* title of this series.
+**Nota:** Para obtener más información sobre `this`, consulte los capítulos 1 y 2 del título *this & Object Prototypes* de esta serie.
 
 ## Prototypes
 
-The prototype mechanism in JavaScript is quite complicated. We will only glance at it here. You will want to spend plenty of time reviewing Chapters 4-6 of the *this & Object Prototypes* title of this series for all the details.
+El mecanismo prototype en JavaScript es bastante complicado. Solo lo echaremos un vistazo aquí. Querrá pasar mucho tiempo revisando los capítulos 4-6 del título *this & Object Prototypes* de esta serie para conocer todos los detalles.
 
-When you reference a property on an object, if that property doesn't exist, JavaScript will automatically use that object's internal prototype reference to find another object to look for the property on. You could think of this almost as a fallback if the property is missing.
+Cuando hace referencia a una propiedad en un objeto, si esa propiedad no existe, JavaScript usará automáticamente la referencia interna del prototype de ese objeto para encontrar otro objeto para buscar la propiedad. Se podría pensar en esto casi como una alternativa si falta la propiedad.
 
-The internal prototype reference linkage from one object to its fallback happens at the time the object is created. The simplest way to illustrate it is with a built-in utility called `Object.create(..)`.
+El enlace de referencia del prototype interno de un objeto a su reserva ocurre en el momento en que se crea el objeto. La forma más sencilla de ilustrarlo es con una utilidad incorporada llamada `Object.create(..)`.
 
-Consider:
+Considerar:
 
 ```js
 var foo = {
@@ -866,35 +866,35 @@ bar.b;		// "hello world"
 bar.a;		// 42 <-- delegated to `foo`
 ```
 
-It may help to visualize the `foo` and `bar` objects and their relationship:
+Esto puede ayudar a visualizar los objetos `foo` y `bar` y su relación:
 
 <img src="fig6.png">
 
-The `a` property doesn't actually exist on the `bar` object, but because `bar` is prototype-linked to `foo`, JavaScript automatically falls back to looking for `a` on the `foo` object, where it's found.
+La propiedad `a` en realidad no existe en el objeto `bar`, pero debido a que `bar` está vinculada a un prototype con` foo`, JavaScript automáticamente vuelve a buscar `a` en el objeto `foo`, donde la encontró.
 
-This linkage may seem like a strange feature of the language. The most common way this feature is used -- and I would argue, abused -- is to try to emulate/fake a "class" mechanism with "inheritance."
+Este vínculo puede parecer una característica extraña del lenguaje. La forma más común en que se usa esta característica, y yo diría que, abusada, es tratar de emular/falsificar un mecanismo de "clase" con "herencia".
 
-But a more natural way of applying prototypes is a pattern called "behavior delegation," where you intentionally design your linked objects to be able to *delegate* from one to the other for parts of the needed behavior.
+Pero una forma más natural de aplicar prototipos es un patrón llamado "behavior delegation (delegación de comportamiento)", en el que intencionalmente diseña sus objetos vinculados para poder *delegar* de uno a otro partes del comportamiento necesario.
 
-**Note:** For more information about prototypes and behavior delegation, see Chapters 4-6 of the *this & Object Prototypes* title of this series.
+**Nota:** Para obtener más información sobre los prototypes y la delegación de comportamiento, consulte los capítulos 4-6 del título *this & Object Prototypes* de esta serie.
 
 ## Old & New
 
-Some of the JS features we've already covered, and certainly many of the features covered in the rest of this series, are newer additions and will not necessarily be available in older browsers. In fact, some of the newest features in the specification aren't even implemented in any stable browsers yet.
+Algunas de las características de JS que ya hemos cubierto, y ciertamente muchas de las características que se tratan en el resto de esta serie, son adiciones más nuevas y no necesariamente estarán disponibles en los navegadores más antiguos. De hecho, algunas de las características más nuevas de la especificación aún no están implementadas en ningún navegador estable.
 
-So, what do you do with the new stuff? Do you just have to wait around for years or decades for all the old browsers to fade into obscurity?
+Entonces, ¿qué haces con las cosas nuevas? ¿Solo tiene que esperar durante años o décadas para que todos los navegadores antiguos se desvanezcan en la oscuridad?
 
-That's how many people think about the situation, but it's really not a healthy approach to JS.
+Así es como mucha gente piensa acerca de la situación, pero realmente no es un enfoque saludable para JS.
 
-There are two main techniques you can use to "bring" the newer JavaScript stuff to the older browsers: polyfilling and transpiling.
+Hay dos técnicas principales que puede utilizar para "traer" lo más nuevo de JavaScript a los navegadores más antiguos: el polyfilling (relleno múltiple) y el transpiling.
 
 ### Polyfilling
 
-The word "polyfill" is an invented term (by Remy Sharp) (https://remysharp.com/2010/10/08/what-is-a-polyfill) used to refer to taking the definition of a newer feature and producing a piece of code that's equivalent to the behavior, but is able to run in older JS environments.
+La palabra "polyfill" es un término inventado (por Remy Sharp) (https://remysharp.com/2010/10/08/what-is-a-polyfill) que se usa para referirse a tomar la definición de una característica más nueva y producir un fragmento de código que es equivalente al comportamiento, pero que puede ejecutarse en entornos JS más antiguos.
 
-For example, ES6 defines a utility called `Number.isNaN(..)` to provide an accurate non-buggy check for `NaN` values, deprecating the original `isNaN(..)` utility. But it's easy to polyfill that utility so that you can start using it in your code regardless of whether the end user is in an ES6 browser or not.
+Por ejemplo, ES6 define una utilidad llamada `Number.isNaN(..)` para proporcionar una verificación precisa y sin errores de los valores de `NaN`, desaprobando la utilidad original `isNaN(..)`. Pero es fácil de rellenar esa utilidad para poder comenzar a usarla en su código, independientemente de si el usuario final está en un navegador ES6 o no.
 
-Consider:
+Considerar:
 
 ```js
 if (!Number.isNaN) {
@@ -904,31 +904,31 @@ if (!Number.isNaN) {
 }
 ```
 
-The `if` statement guards against applying the polyfill definition in ES6 browsers where it will already exist. If it's not already present, we define `Number.isNaN(..)`.
+La sentencia 'if' protege contra la aplicación de la definición de polyfill en los navegadores ES6 donde ya existirá. Si aún no está presente, definimos `Number.isNaN(..)`.
 
-**Note:** The check we do here takes advantage of a quirk with `NaN` values, which is that they're the only value in the whole language that is not equal to itself. So the `NaN` value is the only one that would make `x !== x` be `true`.
+**Nota:** La comprobación que hacemos aquí se aprovecha de una peculiaridad con los valores `NaN`, que es el único valor en todo el lenguage que no es igual a sí mismo. Entonces, el valor `NaN` es el único que haría que `x! == x` sea `true`.
 
-Not all new features are fully polyfillable. Sometimes most of the behavior can be polyfilled, but there are still small deviations. You should be really, really careful in implementing a polyfill yourself, to make sure you are adhering to the specification as strictly as possible.
+No todas las características nuevas son totalmente polyfillable. A veces, la mayor parte del comportamiento puede ser rellenado, pero todavía hay pequeñas desviaciones. Debe ser muy, muy cuidadoso al implementar un polyfill usted mismo, para asegurarse de que cumple con las especificaciones lo más estrictamente posible.
 
-Or better yet, use an already vetted set of polyfills that you can trust, such as those provided by ES5-Shim (https://github.com/es-shims/es5-shim) and ES6-Shim (https://github.com/es-shims/es6-shim).
+O mejor aún, use un conjunto ya confirmado de polyfills en los que puede confiar, como los proporcionados por ES5-Shim (https://github.com/es-shims/es5-shim) y ES6-Shim (https: // github.com/es-shims/es6-shim).
 
 ### Transpiling
 
-There's no way to polyfill new syntax that has been added to the language. The new syntax would throw an error in the old JS engine as unrecognized/invalid.
+No hay manera de hacer un polyfill de la nueva sintaxis que se haya agregado al lenguaje. La nueva sintaxis arrojaría un error en el antiguo motor JS como unrecognized/invalid.
 
-So the better option is to use a tool that converts your newer code into older code equivalents. This process is commonly called "transpiling," a term for transforming + compiling.
+Entonces, la mejor opción es usar una herramienta que convierta su código más nuevo en equivalentes de código más antiguos. Este proceso se denomina comúnmente "transpiling", un término para transformar + compilar.
 
-Essentially, your source code is authored in the new syntax form, but what you deploy to the browser is the transpiled code in old syntax form. You typically insert the transpiler into your build process, similar to your code linter or your minifier.
+Esencialmente, su código fuente se crea en la nueva forma de sintaxis, pero lo que implementa en el navegador es el código transpilado en forma de sintaxis antigua. Por lo general, inserta el transpiler en su proceso de compilación, de manera similar a su código o su minificador.
 
-You might wonder why you'd go to the trouble to write new syntax only to have it transpiled away to older code -- why not just write the older code directly?
+Podría preguntarse por qué se tomaría la molestia de escribir una nueva sintaxis solo para que se transfiera al código más antiguo. ¿Por qué no escribir directamente el código más antiguo?
 
-There are several important reasons you should care about transpiling:
+Hay varias razones importantes por las que debe preocuparse por la transcripción:
 
-* The new syntax added to the language is designed to make your code more readable and maintainable. The older equivalents are often much more convoluted. You should prefer writing newer and cleaner syntax, not only for yourself but for all other members of the development team.
-* If you transpile only for older browsers, but serve the new syntax to the newest browsers, you get to take advantage of browser performance optimizations with the new syntax. This also lets browser makers have more real-world code to test their implementations and optimizations on.
-* Using the new syntax earlier allows it to be tested more robustly in the real world, which provides earlier feedback to the JavaScript committee (TC39). If issues are found early enough, they can be changed/fixed before those language design mistakes become permanent.
+* La nueva sintaxis agregada al lenguaje está diseñada para hacer que su código sea más fácil de leer y mantener. Los equivalentes más antiguos suelen ser mucho más complicados. Debería preferir escribir una sintaxis más nueva y más limpia, no solo para usted sino para todos los demás miembros del equipo de desarrollo.
+* Si solo transpila para los navegadores más antiguos, pero sirve la nueva sintaxis de los navegadores más nuevos, puede aprovechar las optimizaciones de rendimiento del navegador con la nueva sintaxis. Esto también permite a los fabricantes de navegadores tener más código del mundo real para probar sus implementaciones y optimizaciones.
+* El uso de la nueva sintaxis anterior permite que se pruebe de manera más sólida en el mundo real, lo que proporciona comentarios anteriores al comité de JavaScript (TC39). Si los problemas se detectan con la suficiente antelación, se pueden cambiar/corregir antes de que los errores de diseño del idioma se vuelvan permanentes.
 
-Here's a quick example of transpiling. ES6 adds a feature called "default parameter values." It looks like this:
+Aquí hay un ejemplo rápido de transpiling. ES6 agrega una característica llamada "valores de parámetros predeterminados". Se parece a esto:
 
 ```js
 function foo(a = 2) {
@@ -939,7 +939,7 @@ foo();		// 2
 foo( 42 );	// 42
 ```
 
-Simple, right? Helpful, too! But it's new syntax that's invalid in pre-ES6 engines. So what will a transpiler do with that code to make it run in older environments?
+Simple, ¿verdad? Útil, también! Pero su nueva sintaxis no es válida en los motores anteriores a ES6. Entonces, ¿qué hará un transpiler con ese código para que se ejecute en entornos más antiguos?
 
 ```js
 function foo() {
@@ -948,47 +948,48 @@ function foo() {
 }
 ```
 
-As you can see, it checks to see if the `arguments[0]` value is `void 0` (aka `undefined`), and if so provides the `2` default value; otherwise, it assigns whatever was passed.
+Como puede ver, verifica si el valor de `arguments[0]` es `void 0` (también conocido como `undefined`), y si es así, proporciona el valor predeterminado de `2`; De lo contrario, asigna lo que fue pasado.
 
-In addition to being able to now use the nicer syntax even in older browsers, looking at the transpiled code actually explains the intended behavior more clearly.
+Además de poder usar ahora la sintaxis más agradable incluso en los navegadores más antiguos, observar el código transpilado en realidad explica el comportamiento deseado con mayor claridad.
 
-You may not have realized just from looking at the ES6 version that `undefined` is the only value that can't get explicitly passed in for a default-value parameter, but the transpiled code makes that much more clear.
+Es posible que no se haya dado cuenta de la versión ES6 de que `undefined` es el único valor que no se puede pasar explícitamente para un parámetro de valor predeterminado, pero el código transpilado lo hace mucho más claro.
 
-The last important detail to emphasize about transpilers is that they should now be thought of as a standard part of the JS development ecosystem and process. JS is going to continue to evolve, much more quickly than before, so every few months new syntax and new features will be added.
+El último detalle importante para enfatizar sobre los transpilers es que ahora deben considerarse como una parte estándar del proceso y el ecosistema de desarrollo de JS. JS seguirá evolucionando, mucho más rápido que antes, por lo que cada pocos meses se agregarán nuevas sintaxis y nuevas características.
 
-If you use a transpiler by default, you'll always be able to make that switch to newer syntax whenever you find it useful, rather than always waiting for years for today's browsers to phase out.
+Si usa un transpiler de forma predeterminada, siempre podrá hacer ese cambio a una sintaxis más nueva siempre que lo encuentre útil, en lugar de esperar siempre durante años para que los navegadores de hoy se eliminen progresivamente.
 
-There are quite a few great transpilers for you to choose from. Here are some good options at the time of this writing:
+Hay bastantes excelentes transpilers para que elijas. Aquí hay algunas buenas opciones al momento de escribir este artículo:
 
 * Babel (https://babeljs.io) (formerly 6to5): Transpiles ES6+ into ES5
 * Traceur (https://github.com/google/traceur-compiler): Transpiles ES6, ES7, and beyond into ES5
 
 ## Non-JavaScript
 
-So far, the only things we've covered are in the JS language itself. The reality is that most JS is written to run in and interact with environments like browsers. A good chunk of the stuff that you write in your code is, strictly speaking, not directly controlled by JavaScript. That probably sounds a little strange.
+Hasta ahora, las únicas cosas que hemos cubierto están en el lenguaje JS en sí. La realidad es que la mayoría de JS está escrito para ejecutarse e interactuar con entornos como los navegadores. Una buena parte de las cosas que escribes en tu código no está, estrictamente hablando, directamente controlada por JavaScript. Eso probablemente suena un poco extraño.
 
-The most common non-JavaScript JavaScript you'll encounter is the DOM API. For example:
+El JavaScript que no es de JavaScript más común que encontrará es la API DOM. Por ejemplo:
+
 
 ```js
 var el = document.getElementById( "foo" );
 ```
 
-The `document` variable exists as a global variable when your code is running in a browser. It's not provided by the JS engine, nor is it particularly controlled by the JavaScript specification. It takes the form of something that looks an awful lot like a normal JS `object`, but it's not really exactly that. It's a special `object,` often called a "host object."
+La variable `document` existe como una variable global cuando su código se ejecuta en un navegador. No es proporcionado por el motor JS, ni está particularmente controlado por la especificación de JavaScript. Toma la forma de algo que se parece mucho a un objeto normal de JS, pero no es exactamente eso. Es un `object` especial, a menudo llamado "objeto host".
 
-Moreover, the `getElementById(..)` method on `document` looks like a normal JS function, but it's just a thinly exposed interface to a built-in method provided by the DOM from your browser. In some (newer-generation) browsers, this layer may also be in JS, but traditionally the DOM and its behavior is implemented in something more like C/C++.
+Además, el método `getElementById(..)` en `document` parece una función JS normal, pero es solo una interfaz poco expuesta a un método incorporado provisto por el DOM desde su navegador. En algunos navegadores (de nueva generación), esta capa también puede estar en JS, pero tradicionalmente el DOM y su comportamiento se implementan en algo más como C/C++.
 
-Another example is with input/output (I/O).
+Otro ejemplo es con input/output (I/O).
 
-Everyone's favorite `alert(..)` pops up a message box in the user's browser window. `alert(..)` is provided to your JS program by the browser, not by the JS engine itself. The call you make sends the message to the browser internals and it handles drawing and displaying the message box.
+La `alert(..)` favorita de todos aparece un cuadro de mensaje en la ventana del navegador del usuario. `alert (..)` se proporciona a su programa JS mediante el navegador, no por el motor JS en sí. La llamada que realiza envía el mensaje a las partes internas del navegador y se encarga de dibujar y mostrar el cuadro de mensaje.
 
-The same goes with `console.log(..)`; your browser provides such mechanisms and hooks them up to the developer tools.
+Lo mismo ocurre con `console.log(..)`; su navegador proporciona dichos mecanismos y los conecta a las herramientas de desarrollo.
 
-This book, and this whole series, focuses on JavaScript the language. That's why you don't see any substantial coverage of these non-JavaScript JavaScript mechanisms. Nevertheless, you need to be aware of them, as they'll be in every JS program you write!
+Este libro, y toda esta serie, se enfoca en JavaScript, el lenguaje. Es por eso que no ve ninguna cobertura sustancial de estos mecanismos JavaScript sin JavaScript. Sin embargo, debes estar atento a ellos, ya que estarán en cada programa JS que escribas.
 
 ## Review
 
-The first step to learning JavaScript's flavor of programming is to get a basic understanding of its core mechanisms like values, types, function closures, `this`, and prototypes.
+El primer paso para aprender el sabor de la programación de JavaScript es obtener una comprensión básica de sus mecanismos centrales, como valores, tipos, function closures, `this` y prototypes
 
-Of course, each of these topics deserves much greater coverage than you've seen here, but that's why they have chapters and books dedicated to them throughout the rest of this series. After you feel pretty comfortable with the concepts and code samples in this chapter, the rest of the series awaits you to really dig in and get to know the language deeply.
+Por supuesto, cada uno de estos temas merece una cobertura mucho mayor que la que has visto aquí, pero es por eso que tienen capítulos y libros dedicados a ellos durante el resto de esta serie. Después de que te sientas bastante cómodo con los conceptos y ejemplos de código en este capítulo, el resto de la serie te espera para realmente profundizar y conocer el lenguaje profundamente.
 
-The final chapter of this book will briefly summarize each of the other titles in the series and the other concepts they cover besides what we've already explored.
+El capítulo final de este libro resumirá brevemente cada uno de los otros títulos de la serie y los otros conceptos que cubren además de lo que ya hemos explorado.

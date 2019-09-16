@@ -43,41 +43,41 @@ Para JavaScript, la compilación que ocurre, en muchos casos, solo microsegundos
 
 Digamos, por simplicidad, que cualquier fragmento de JavaScript debe compilarse antes (¡generalmente *justo* antes!) Para que se ejecute. Entonces, el compilador JS tomará el programa `var a = 2;` y lo compilará *primero*, y luego estará listo para ejecutarlo, generalmente de inmediato.
 
-## Understanding Scope
+## Entendiendo el Scope
 
-The way we will approach learning about scope is to think of the process in terms of a conversation. But, *who* is having the conversation?
+La forma en que abordaremos el aprendizaje sobre el alcance es pensar en el proceso en términos de una conversación. Pero, ¿*quién* está teniendo la conversación?
 
 ### The Cast
 
-Let's meet the cast of characters that interact to process the program `var a = 2;`, so we understand their conversations that we'll listen in on shortly:
+Conozcamos al elenco de personajes que interactúan para procesar el programa `var a = 2;`, entonces entendemos sus conversaciones que escucharemos en breve:
 
-1. *Engine*: responsible for start-to-finish compilation and execution of our JavaScript program.
+1. *Engine*: responsable de la compilación y ejecución de principio a fin de nuestro programa JavaScript.
 
-2. *Compiler*: one of *Engine*'s friends; handles all the dirty work of parsing and code-generation (see previous section).
+2. *Compiler*: uno de los amigos de *Engine*; maneja todo el trabajo sucio de análisis y generación de código (ver sección anterior).
 
-3. *Scope*: another friend of *Engine*; collects and maintains a look-up list of all the declared identifiers (variables), and enforces a strict set of rules as to how these are accessible to currently executing code.
+3. *Scope*: otro amigo de *Engine*; recopila y mantiene una lista de búsqueda de todos los identificadores (variables) declarados, y aplica un estricto conjunto de reglas sobre cómo son accesibles para el código que se está ejecutando actualmente.
 
-For you to *fully understand* how JavaScript works, you need to begin to *think* like *Engine* (and friends) think, ask the questions they ask, and answer those questions the same.
+Para que comprenda completamente cómo funciona JavaScript, debe comenzar a *pensar* como lo hace *Engine* (y sus amigos), hacer las preguntas que hacen y responder esas preguntas de la misma manera.
 
 ### Back & Forth
 
-When you see the program `var a = 2;`, you most likely think of that as one statement. But that's not how our new friend *Engine* sees it. In fact, *Engine* sees two distinct statements, one which *Compiler* will handle during compilation, and one which *Engine* will handle during execution.
+Cuando vea el programa `var a = 2;`, lo más probable es que piense en eso como una declaración. Pero no es así como lo ve nuestro nuevo amigo *Engine*. De hecho, *Engine* ve dos declaraciones distintas, una que *Compiler* manejará durante la compilación y otra que *Engine* manejará durante la ejecución.
 
-So, let's break down how *Engine* and friends will approach the program `var a = 2;`.
+Entonces, analicemos cómo *Engine* y sus amigos abordarán el programa `var a = 2;`.
 
-The first thing *Compiler* will do with this program is perform lexing to break it down into tokens, which it will then parse into a tree. But when *Compiler* gets to code-generation, it will treat this program somewhat differently than perhaps assumed.
+Lo primero que *Compiler* hará con este programa es realizar lexing para descomponerlo en tokens, que luego se analizarán en un árbol. Pero cuando *Compiler* llega a la generación de código, tratará este programa de manera algo diferente de lo que quizás se supone.
 
-A reasonable assumption would be that *Compiler* will produce code that could be summed up by this pseudo-code: "Allocate memory for a variable, label it `a`, then stick the value `2` into that variable." Unfortunately, that's not quite accurate.
+Una suposición razonable sería que *Compiler* producirá código que podría resumirse con este pseudocódigo: "Asignar memoria para una variable, etiquetarla como `a`, luego pegar el valor `2` en esa variable". Desafortunadamente, eso no es del todo exacto.
 
-*Compiler* will instead proceed as:
+*Compiler* en su lugar procederá así:
 
-1. Encountering `var a`, *Compiler* asks *Scope* to see if a variable `a` already exists for that particular scope collection. If so, *Compiler* ignores this declaration and moves on. Otherwise, *Compiler* asks *Scope* to declare a new variable called `a` for that scope collection.
+1. Al encontrar `var a`, *Compiler* pregunta *Scope* para ver si ya existe una variable `a` para esa colección de alcances en particular. Si es así, *Compiler* ignora esta declaración y continúa. De lo contrario, *Compiler* le pide a *Scope* que declare una nueva variable llamada `a` para esa colección de alcances.
 
-2. *Compiler* then produces code for *Engine* to later execute, to handle the `a = 2` assignment. The code *Engine* runs will first ask *Scope* if there is a variable called `a` accessible in the current scope collection. If so, *Engine* uses that variable. If not, *Engine* looks *elsewhere* (see nested *Scope* section below).
+2. *Compiler* produce código para *Engine* para luego ejecutarlo, para manejar la asignación `a = 2`. El código *Engine* ejecuta primero preguntará *Scope* si hay una variable llamada `a` accesible en la colección de alcance actual. Si es así, *Engine* usa esa variable. De lo contrario, *Engine* busca *en otra parte* (consulte la sección *Scope* a continuación).
 
-If *Engine* eventually finds a variable, it assigns the value `2` to it. If not, *Engine* will raise its hand and yell out an error!
+Si *Engine* finalmente encuentra una variable, le asigna el valor `2`. De lo contrario, *Engine* levantará la mano y gritará un error.
 
-To summarize: two distinct actions are taken for a variable assignment: First, *Compiler* declares a variable (if not previously declared in the current scope), and second, when executing, *Engine* looks up the variable in *Scope* and assigns to it, if found.
+Para resumir: se toman dos acciones distintas para una asignación de variable: Primero, *Compiler* declara una variable (si no se declaró previamente en el alcance actual), y segundo, cuando se ejecuta, *Engine* busca la variable en *Scope* y se le asigna, si se encuentra.
 
 ### Compiler Speak
 

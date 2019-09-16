@@ -1,47 +1,47 @@
 # You Don't Know JS: Scope & Closures
-# Chapter 1: What is Scope?
+# Chapter 1: ¿Qué es el Scope?
 
-One of the most fundamental paradigms of nearly all programming languages is the ability to store values in variables, and later retrieve or modify those values. In fact, the ability to store values and pull values out of variables is what gives a program *state*.
+Uno de los paradigmas más fundamentales de casi todos los lenguajes de programación es la capacidad de almacenar valores en variables y luego recuperarlos o modificarlos. De hecho, la capacidad de almacenar valores y extraer valores de las variables es lo que da un *estado* de programa.
 
-Without such a concept, a program could perform some tasks, but they would be extremely limited and not terribly interesting.
+Sin ese concepto, un programa podría realizar algunas tareas, pero serían extremadamente limitadas y no terriblemente interesantes.
 
-But the inclusion of variables into our program begets the most interesting questions we will now address: where do those variables *live*? In other words, where are they stored? And, most importantly, how does our program find them when it needs them?
+Pero la inclusión de variables en nuestro programa genera las preguntas más interesantes que abordaremos ahora: ¿dónde *viven* esas variables? En otras palabras, ¿dónde se almacenan? Y, lo más importante, ¿cómo los encuentra nuestro programa cuando las necesita?
 
-These questions speak to the need for a well-defined set of rules for storing variables in some location, and for finding those variables at a later time. We'll call that set of rules: *Scope*.
+Estas preguntas hablan de la necesidad de un conjunto bien definido de reglas para almacenar variables en algún lugar y para encontrar esas variables en un momento posterior. Llamaremos a ese conjunto de reglas: *Scope* (alcance).
 
-But, where and how do these *Scope* rules get set?
+Pero, ¿dónde y cómo se establecen estas reglas de *Scope*?
 
-## Compiler Theory
+## Teoría del compilador
 
-It may be self-evident, or it may be surprising, depending on your level of interaction with various languages, but despite the fact that JavaScript falls under the general category of "dynamic" or "interpreted" languages, it is in fact a compiled language. It is *not* compiled well in advance, as are many traditionally-compiled languages, nor are the results of compilation portable among various distributed systems.
+Puede ser evidente, o puede ser sorprendente, dependiendo de su nivel de interacción con varios lenguajes, pero a pesar del hecho de que JavaScript cae dentro de la categoría general de lenguajes "dinámicos" o "interpretados", de hecho es un lenguaje compilado. *No* se compila con suficiente antelación, como lo son muchos lenguajes compilados tradicionalmente, ni los resultados de la compilación son portátiles entre varios sistemas distribuidos.
 
-But, nevertheless, the JavaScript engine performs many of the same steps, albeit in more sophisticated ways than we may commonly be aware, of any traditional language-compiler.
+Pero, sin embargo, el motor de JavaScript realiza muchos de los mismos pasos, aunque de maneras más sofisticadas de lo que comúnmente conocemos, de cualquier compilador de lenguaje tradicional.
 
-In a traditional compiled-language process, a chunk of source code, your program, will undergo typically three steps *before* it is executed, roughly called "compilation":
+En un proceso tradicional de lenguaje compilado, un trozo de código fuente, su programa, generalmente se someterá a tres pasos *antes* de ejecutarse, más o menos llamado "compilación":
 
-1. **Tokenizing/Lexing:** breaking up a string of characters into meaningful (to the language) chunks, called tokens. For instance, consider the program: `var a = 2;`. This program would likely be broken up into the following tokens: `var`, `a`, `=`, `2`, and `;`. Whitespace may or may not be persisted as a token, depending on whether it's meaningful or not.
+1. **Tokenizing/Lexing:** separando una cadena de caracteres en fragmentos significativos (para el lenguaje), llamados tokens. Por ejemplo, considere el programa: `var a = 2;`. Es probable que este programa se divida en los siguientes tokens: `var`,` a`, `=`, `2` y`; `. El espacio en blanco puede o no persistir como un token, dependiendo de si es significativo o no.
 
-    **Note:** The difference between tokenizing and lexing is subtle and academic, but it centers on whether or not these tokens are identified in a *stateless* or *stateful* way. Put simply, if the tokenizer were to invoke stateful parsing rules to figure out whether `a` should be considered a distinct token or just part of another token, *that* would be **lexing**.
+     **Nota:** La diferencia entre tokenizing y lexing es sutil y académica, pero se centra en si estos tokens se identifican o no de manera *stateless* o *stateful*. En pocas palabras, si el tokenizador invocara reglas de análisis con estado para determinar si `a` debe considerarse un token distinto o solo parte de otro token, *eso* sería **lexing**.
 
-2. **Parsing:** taking a stream (array) of tokens and turning it into a tree of nested elements, which collectively represent the grammatical structure of the program. This tree is called an "AST" (<b>A</b>bstract <b>S</b>yntax <b>T</b>ree).
+2. **Parsing:** tomando una secuencia (array) de tokens y convirtiéndola en un árbol de elementos anidados, que representan colectivamente la estructura gramatical del programa. Este árbol se llama "AST" (<b>A</b>bstract <b>S</b>yntax <b>T</b>ree).
 
-    The tree for `var a = 2;` might start with a top-level node called `VariableDeclaration`, with a child node called `Identifier` (whose value is `a`), and another child called `AssignmentExpression` which itself has a child called `NumericLiteral` (whose value is `2`).
+     El árbol para `var a = 2;` podría comenzar con un nodo de nivel superior llamado `VariableDeclaration`, con un nodo hijo llamado` Identifier` (cuyo valor es `a`), y otro hijo llamado` AssignmentExpression` que tiene un hijo llamado `NumericLiteral` (cuyo valor es` 2`).
 
-3. **Code-Generation:** the process of taking an AST and turning it into executable code. This part varies greatly depending on the language, the platform it's targeting, etc.
+3. **Code-Generation:** el proceso de tomar un AST y convertirlo en código ejecutable. Esta parte varía mucho según el idioma, la plataforma a la que se dirige, etc.
 
-    So, rather than get mired in details, we'll just handwave and say that there's a way to take our above described AST for `var a = 2;` and turn it into a set of machine instructions to actually *create* a variable called `a` (including reserving memory, etc.), and then store a value into `a`.
+     Entonces, en lugar de atascarnos en detalles, simplemente saludaremos con la mano y diremos que hay una manera de tomar nuestro AST descrito anteriormente para `var a = 2;` y convertirlo en un conjunto de instrucciones de máquina para realmente *crear* una variable llamado `a` (incluida la reserva de memoria, etc.), y luego almacena un valor en `a`.
 
-    **Note:** The details of how the engine manages system resources are deeper than we will dig, so we'll just take it for granted that the engine is able to create and store variables as needed.
+     **Nota:** Los detalles de cómo el motor gestiona los recursos del sistema son más profundos de lo que cavaremos, por lo que daremos por sentado que el motor puede crear y almacenar variables según sea necesario.
 
-The JavaScript engine is vastly more complex than *just* those three steps, as are most other language compilers. For instance, in the process of parsing and code-generation, there are certainly steps to optimize the performance of the execution, including collapsing redundant elements, etc.
+El motor de JavaScript es mucho más complejo que *solo* esos tres pasos, como lo son la mayoría de los compiladores de otros lenguajes. Por ejemplo, en el proceso de análisis y generación de código, ciertamente hay pasos para optimizar el rendimiento de la ejecución, incluido el colapso de elementos redundantes, etc.
 
-So, I'm painting only with broad strokes here. But I think you'll see shortly why *these* details we *do* cover, even at a high level, are relevant.
+Entonces, estoy pintando solo con trazos amplios aquí. Pero creo que verá en breve por qué *estos* detalles que *cubrimos*, incluso a un nivel alto, son relevantes.
 
-For one thing, JavaScript engines don't get the luxury (like other language compilers) of having plenty of time to optimize, because JavaScript compilation doesn't happen in a build step ahead of time, as with other languages.
+Por un lado, los motores de JavaScript no tienen el lujo (como otros compiladores de lenguajes) de tener mucho tiempo para optimizar, porque la compilación de JavaScript no ocurre en un paso de compilación antes, como ocurre con otros lenguajes.
 
-For JavaScript, the compilation that occurs happens, in many cases, mere microseconds (or less!) before the code is executed. To ensure the fastest performance, JS engines use all kinds of tricks (like JITs, which lazy compile and even hot re-compile, etc.) which are well beyond the "scope" of our discussion here.
+Para JavaScript, la compilación que ocurre, en muchos casos, solo microsegundos (¡o menos!) antes de que se ejecute el código. Para garantizar el rendimiento más rápido, los motores JS utilizan todo tipo de trucos (como los JIT, que compilan de forma diferida e incluso la compilación en caliente, etc.) que están más allá del "alcance" de nuestra discusión aquí.
 
-Let's just say, for simplicity's sake, that any snippet of JavaScript has to be compiled before (usually *right* before!) it's executed. So, the JS compiler will take the program `var a = 2;` and compile it *first*, and then be ready to execute it, usually right away.
+Digamos, por simplicidad, que cualquier fragmento de JavaScript debe compilarse antes (¡generalmente *justo* antes!) Para que se ejecute. Entonces, el compilador JS tomará el programa `var a = 2;` y lo compilará *primero*, y luego estará listo para ejecutarlo, generalmente de inmediato.
 
 ## Understanding Scope
 

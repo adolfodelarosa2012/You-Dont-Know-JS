@@ -62,6 +62,10 @@ Si hubiera habido una `c` tanto dentro de `bar(..)` como dentro de `foo(..)`, la
 
 **Note:** Global variables are also automatically properties of the global object (`window` in browsers, etc.), so it *is* possible to reference a global variable not directly by its lexical name, but instead indirectly as a property reference of the global object.
 
+**La búsqueda del alcance se detiene una vez que encuentra la primera coincidencia**. El mismo nombre de identificador se puede especificar en varias capas de ámbito anidado, lo que se denomina "sombreado" (el identificador interno "sombrea" al identificador externo). Independientemente del sombreado, la búsqueda de alcance siempre comienza en el alcance más interno que se ejecuta en ese momento, y avanza hacia afuera / hacia arriba hasta la primera coincidencia, y se detiene.
+
+**Nota:** Las variables globales también son propiedades automáticas del objeto global (ventana en navegadores, etc.), por lo que es posible hacer referencia a una variable global no directamente por su nombre léxico, sino indirectamente como una referencia de propiedad del objeto global.
+
 ```js
 window.a
 ```

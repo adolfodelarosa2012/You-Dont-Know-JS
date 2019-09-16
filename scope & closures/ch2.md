@@ -1,23 +1,23 @@
 # You Don't Know JS: Scope & Closures
 # Chapter 2: Lexical Scope
 
-In Chapter 1, we defined "scope" as the set of rules that govern how the *Engine* can look up a variable by its identifier name and find it, either in the current *Scope*, or in any of the *Nested Scopes* it's contained within.
+En el Capítulo 1, definimos "scope" como el conjunto de reglas que rigen cómo el *Engine* puede buscar una variable por su nombre de identificador y encontrarla, ya sea en el *Scope* actual o en cualquiera de los *Nested Scopes* está contenido dentro.
 
-There are two predominant models for how scope works. The first of these is by far the most common, used by the vast majority of programming languages. It's called **Lexical Scope**, and we will examine it in-depth. The other model, which is still used by some languages (such as Bash scripting, some modes in Perl, etc.) is called **Dynamic Scope**.
+Hay dos modelos predominantes de cómo funciona el alcance. El primero de ellos es, con mucho, el más común, utilizado por la gran mayoría de los lenguajes de programación. Se llama **Lexical Scope**, y lo examinaremos en profundidad. El otro modelo, que todavía usan algunos lenguajes (como las secuencias de comandos Bash, algunos modos en Perl, etc.) se llama **Dynamic Scope**.
 
-Dynamic Scope is covered in Appendix A. I mention it here only to provide a contrast with Lexical Scope, which is the scope model that JavaScript employs.
+Dynamic Scope está cubierto en el Apéndice A. Lo menciono aquí solo para proporcionar un contraste con Lexical Scope, que es el modelo de alcance que emplea JavaScript.
 
 ## Lex-time
 
-As we discussed in Chapter 1, the first traditional phase of a standard language compiler is called lexing (aka, tokenizing). If you recall, the lexing process examines a string of source code characters and assigns semantic meaning to the tokens as a result of some stateful parsing.
+Como discutimos en el Capítulo 1, la primera fase tradicional de un compilador de lenguaje estándar se llama lexing (también conocido como tokenizing). Si recuerda, el proceso lexing examina una cadena de caracteres de código fuente y asigna un significado semántico a los tokens como resultado de un análisis detallado.
 
-It is this concept which provides the foundation to understand what lexical scope is and where the name comes from.
+Es este concepto el que proporciona la base para comprender qué es el alcance léxico y de dónde proviene el nombre.
 
-To define it somewhat circularly, lexical scope is scope that is defined at lexing time. In other words, lexical scope is based on where variables and blocks of scope are authored, by you, at write time, and thus is (mostly) set in stone by the time the lexer processes your code.
+Para definirlo de forma algo circular, el alcance léxico es el alcance que se define en el momento de la lexing. En otras palabras, el alcance léxico se basa en el lugar donde usted crea las variables y los bloques de alcance, en el momento de la escritura, y por lo tanto (en su mayoría) se establece en piedra cuando el lexer procesa su código.
 
-**Note:** We will see in a little bit there are some ways to cheat lexical scope, thereby modifying it after the lexer has passed by, but these are frowned upon. It is considered best practice to treat lexical scope as, in fact, lexical-only, and thus entirely author-time in nature.
+**Nota:** Veremos en un momento que hay algunas formas de engañar el alcance léxico, modificándolo así después de que el léxico haya pasado, pero estos están mal vistos. Se considera la mejor práctica tratar el alcance léxico como, de hecho, solo léxico y, por lo tanto, completamente de naturaleza de autor.
 
-Let's consider this block of code:
+Consideremos este bloque de código:
 
 ```js
 function foo(a) {
@@ -34,29 +34,29 @@ function foo(a) {
 foo( 2 ); // 2 4 12
 ```
 
-There are three nested scopes inherent in this code example. It may be helpful to think about these scopes as bubbles inside of each other.
+Hay tres ámbitos anidados inherentes a este ejemplo de código. Puede ser útil pensar en estos ámbitos como burbujas dentro de cada uno.
 
 <img src="fig2.png" width="500">
 
-**Bubble 1** encompasses the global scope, and has just one identifier in it: `foo`.
+**Bubble 1** abarca el alcance global y solo tiene un identificador: `foo`.
 
-**Bubble 2** encompasses the scope of `foo`, which includes the three identifiers: `a`, `bar` and `b`.
+**Bubble 2** abarca el alcance de `foo`, que incluye los tres identificadores:` a`, `bar` y` b`.
 
-**Bubble 3** encompasses the scope of `bar`, and it includes just one identifier: `c`.
+**Bubble 3** abarca el alcance de `bar`, e incluye solo un identificador: `c`.
 
-Scope bubbles are defined by where the blocks of scope are written, which one is nested inside the other, etc. In the next chapter, we'll discuss different units of scope, but for now, let's just assume that each function creates a new bubble of scope.
+Las burbujas de alcance se definen por el lugar donde se escriben los bloques de alcance, cuál está anidado dentro del otro, etc. En el próximo capítulo, discutiremos diferentes unidades de alcance, pero por ahora, supongamos que cada función crea un nuevo burbuja de alcance.
 
-The bubble for `bar` is entirely contained within the bubble for `foo`, because (and only because) that's where we chose to define the function `bar`.
+La burbuja para `bar` está completamente contenida dentro de la burbuja para `foo`, porque (y solo porque) es ahí donde elegimos definir la función `bar`.
 
-Notice that these nested bubbles are strictly nested. We're not talking about Venn diagrams where the bubbles can cross boundaries. In other words, no bubble for some function can simultaneously exist (partially) inside two other outer scope bubbles, just as no function can partially be inside each of two parent functions.
+Tenga en cuenta que estas burbujas anidadas están estrictamente anidadas. No estamos hablando de diagramas de Venn donde las burbujas pueden cruzar los límites. En otras palabras, no puede existir una burbuja para alguna función simultáneamente (parcialmente) dentro de otras dos burbujas de alcance externo, así como ninguna función puede estar parcialmente dentro de cada una de las dos funciones principales.
 
 ### Look-ups
 
-The structure and relative placement of these scope bubbles fully explains to the *Engine* all the places it needs to look to find an identifier.
+La estructura y la ubicación relativa de estas burbujas de alcance explica completamente al *Engine* todos los lugares que necesita buscar para encontrar un identificador.
 
-In the above code snippet, the *Engine* executes the `console.log(..)` statement and goes looking for the three referenced variables `a`, `b`, and `c`. It first starts with the innermost scope bubble, the scope of the `bar(..)` function. It won't find `a` there, so it goes up one level, out to the next nearest scope bubble, the scope of `foo(..)`. It finds `a` there, and so it uses that `a`. Same thing for `b`. But `c`, it does find inside of `bar(..)`.
+En el fragmento de código anterior, *Engine* ejecuta la instrucción `console.log(..)` y busca las tres variables referenciadas `a`, `b` y `c`. Primero comienza con la burbuja de alcance más interna, el alcance de la función `bar(..)`. No encontrará `a` allí, por lo que sube un nivel, hasta la siguiente burbuja de alcance más cercana, el alcance de `foo(..)`. Encuentra `a` allí, y entonces usa esa `a`. Lo mismo para `b`. Pero `c`, se encuentra dentro de `bar(..)`.
 
-Had there been a `c` both inside of `bar(..)` and inside of `foo(..)`, the `console.log(..)` statement would have found and used the one in `bar(..)`, never getting to the one in `foo(..)`.
+Si hubiera habido una `c` tanto dentro de `bar(..)` como dentro de `foo(..)`, la instrucción `console.log(..)` habría encontrado y utilizado la de `bar(..)`, nunca llegar a la de `foo(..)`.
 
 **Scope look-up stops once it finds the first match**. The same identifier name can be specified at multiple layers of nested scope, which is called "shadowing" (the inner identifier "shadows" the outer identifier). Regardless of shadowing, scope look-up always starts at the innermost scope being executed at the time, and works its way outward/upward until the first match, and stops.
 

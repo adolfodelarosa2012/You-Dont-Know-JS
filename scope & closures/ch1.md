@@ -21,11 +21,11 @@ En un proceso tradicional de lenguaje compilado, un trozo de código fuente, su 
 
 1. **Tokenizing/Lexing:** separando una cadena de caracteres en fragmentos significativos (para el lenguaje), llamados tokens. Por ejemplo, considere el programa: `var a = 2;`. Es probable que este programa se divida en los siguientes tokens: `var`,` a`, `=`, `2` y`; `. El espacio en blanco puede o no persistir como un token, dependiendo de si es significativo o no.
 
-     **Nota:** La diferencia entre tokenizing y lexing es sutil y académica, pero se centra en si estos tokens se identifican o no de manera *stateless* o *stateful*. En pocas palabras, si el tokenizador invocara reglas de análisis con estado para determinar si `a` debe considerarse un token distinto o solo parte de otro token, *eso* sería **lexing**.
+   **Nota:** La diferencia entre tokenizing y lexing es sutil y académica, pero se centra en si estos tokens se identifican o no de manera *stateless* o *stateful*. En pocas palabras, si el tokenizador invocara reglas de análisis con estado para determinar si `a` debe considerarse un token distinto o solo parte de otro token, *eso* sería **lexing**.
 
 2. **Parsing:** tomando una secuencia (array) de tokens y convirtiéndola en un árbol de elementos anidados, que representan colectivamente la estructura gramatical del programa. Este árbol se llama "AST" (<b>A</b>bstract <b>S</b>yntax <b>T</b>ree).
 
-     El árbol para `var a = 2;` podría comenzar con un nodo de nivel superior llamado `VariableDeclaration`, con un nodo hijo llamado` Identifier` (cuyo valor es `a`), y otro hijo llamado` AssignmentExpression` que tiene un hijo llamado `NumericLiteral` (cuyo valor es` 2`).
+   El árbol para `var a = 2;` podría comenzar con un nodo de nivel superior llamado `VariableDeclaration`, con un nodo hijo llamado` Identifier` (cuyo valor es `a`), y otro hijo llamado` AssignmentExpression` que tiene un hijo llamado `NumericLiteral` (cuyo valor es` 2`).
 
 3. **Code-Generation:** el proceso de tomar un AST y convertirlo en código ejecutable. Esta parte varía mucho según el idioma, la plataforma a la que se dirige, etc.
 

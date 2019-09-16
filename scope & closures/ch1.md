@@ -29,9 +29,9 @@ En un proceso tradicional de lenguaje compilado, un trozo de código fuente, su 
 
 3. **Code-Generation:** el proceso de tomar un AST y convertirlo en código ejecutable. Esta parte varía mucho según el idioma, la plataforma a la que se dirige, etc.
 
-     Entonces, en lugar de atascarnos en detalles, simplemente saludaremos con la mano y diremos que hay una manera de tomar nuestro AST descrito anteriormente para `var a = 2;` y convertirlo en un conjunto de instrucciones de máquina para realmente *crear* una variable llamado `a` (incluida la reserva de memoria, etc.), y luego almacena un valor en `a`.
+   Entonces, en lugar de atascarnos en detalles, simplemente saludaremos con la mano y diremos que hay una manera de tomar nuestro AST descrito anteriormente para `var a = 2;` y convertirlo en un conjunto de instrucciones de máquina para realmente *crear* una variable llamado `a` (incluida la reserva de memoria, etc.), y luego almacena un valor en `a`.
 
-     **Nota:** Los detalles de cómo el motor gestiona los recursos del sistema son más profundos de lo que cavaremos, por lo que daremos por sentado que el motor puede crear y almacenar variables según sea necesario.
+   **Nota:** Los detalles de cómo el motor gestiona los recursos del sistema son más profundos de lo que cavaremos, por lo que daremos por sentado que el motor puede crear y almacenar variables según sea necesario.
 
 El motor de JavaScript es mucho más complejo que *solo* esos tres pasos, como lo son la mayoría de los compiladores de otros lenguajes. Por ejemplo, en el proceso de análisis y generación de código, ciertamente hay pasos para optimizar el rendimiento de la ejecución, incluido el colapso de elementos redundantes, etc.
 
